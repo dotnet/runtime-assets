@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.8.1">
+    <id>System.IO.Packaging.TestData</id>
+    <version>1.0.0-prerelease</version>
+    <title>Test data for System.IO.Packaging tests</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkId=329770</licenseUrl>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkId=529047</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package provides test data that is used during the execution of the System.IO.Packaging tests.</description>
+    <summary>Provides test data used during the execution of the System.IO.Packaging tests.</summary>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>System IO Packaging TestData</tags>
+  </metadata>
+  <files>
+    <file src="System.IO.Packaging.TestData\BadDocProps.docx" target="content\BadDocProps.docx" />
+    <file src="System.IO.Packaging.TestData\docprops.docx" target="content\docprops.docx" />
+    <file src="System.IO.Packaging.TestData\EmptyRelationshipElement.docx" target="content\EmptyRelationshipElement.docx" />
+    <file src="System.IO.Packaging.TestData\Hyperlink.docx" target="content\Hyperlink.docx" />
+    <file src="System.IO.Packaging.TestData\invaliddocprops.docx" target="content\invaliddocprops.docx" />
+    <file src="System.IO.Packaging.TestData\invaliddocpropsct.docx" target="content\invaliddocpropsct.docx" />
+    <file src="System.IO.Packaging.TestData\MoreDocProps.docx" target="content\MoreDocProps.docx" />
+    <file src="System.IO.Packaging.TestData\NoDocProps.docx" target="content\NoDocProps.docx" />
+    <file src="System.IO.Packaging.TestData\notes.docx" target="content\notes.docx" />
+    <file src="System.IO.Packaging.TestData\plain.docx" target="content\plain.docx" />
+  </files>
+</package>

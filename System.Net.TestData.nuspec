@@ -16,12 +16,12 @@
     <tags>System Net TestData</tags>
   </metadata>
   <files>
-    <file src="System.Security.Cryptography.X509Certificates.TestData\contoso.com.cer" target="content\TestData\contoso.com.cer" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\contoso.com.p7b" target="content\TestData\contoso.com.p7b" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\contoso.com.pfx" target="content\TestData\contoso.com.pfx" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\DummyTcpServer.pfx" target="content\TestData\DummyTcpServer.pfx" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\testclient1_at_contoso.com.cer" target="content\TestData\testclient1_at_contoso.com.cer" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\testclient1_at_contoso.com.p7b" target="content\TestData\testclient1_at_contoso.com.p7b" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\testclient1_at_contoso.com.pfx" target="content\TestData\testclient1_at_contoso.com.pfx" />
+    <file src="System.Net.TestData\contoso.com.cer" target="content\TestData\contoso.com.cer" />
+    <file src="System.Net.TestData\contoso.com.p7b" target="content\TestData\contoso.com.p7b" />
+    <file src="System.Net.TestData\contoso.com.pfx" target="content\TestData\contoso.com.pfx" />
+    <file src="System.Net.TestData\DummyTcpServer.pfx" target="content\TestData\DummyTcpServer.pfx" />
+    <file src="System.Net.TestData\testclient1_at_contoso.com.cer" target="content\TestData\testclient1_at_contoso.com.cer" />
+    <file src="System.Net.TestData\testclient1_at_contoso.com.p7b" target="content\TestData\testclient1_at_contoso.com.p7b" />
+    <file src="System.Net.TestData\testclient1_at_contoso.com.pfx" target="content\TestData\testclient1_at_contoso.com.pfx" />
   </files>
 </package>

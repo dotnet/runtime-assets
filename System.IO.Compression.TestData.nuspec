@@ -41,6 +41,12 @@
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\nameSlashedAndNonzero.zip" target="content\ZipTestData\badzipfiles\nameSlashedAndNonzero.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\NORMAL.zip" target="content\ZipTestData\badzipfiles\NORMAL.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\numberOfEntriesDifferent.zip" target="content\ZipTestData\badzipfiles\numberOfEntriesDifferent.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\WindowsInvalid_FromUnix.zip" target="content\ZipTestData\compat\WindowsInvalid_FromUnix.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\WindowsInvalid_FromWindows.zip" target="content\ZipTestData\compat\WindowsInvalid_FromWindows.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\NullCharFileName_FromUnix.zip" target="content\ZipTestData\compat\NullCharFileName_FromUnix.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\NullCharFileName_FromWindows.zip" target="content\ZipTestData\compat\NullCharFileName_FromWindows.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\backslashes_FromUnix.zip" target="content\ZipTestData\compat\backslashes_FromUnix.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\backslashes_FromWindows.zip" target="content\ZipTestData\compat\backslashes_FromWindows.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\7zip.zip" target="content\ZipTestData\compat\7zip.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\dotnetzipstreaming.zip" target="content\ZipTestData\compat\dotnetzipstreaming.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\excel.xlsx" target="content\ZipTestData\compat\excel.xlsx" />

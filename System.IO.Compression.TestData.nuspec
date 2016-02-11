@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.IO.Compression.TestData</id>
-    <version>1.0.0-prerelease</version>
+    <version>1.0.2-prerelease</version>
     <title>Test data for System.IO.Compression tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -16,7 +16,7 @@
     <tags>System IO Compression TestData</tags>
   </metadata>
   <files>
-
+    <!-- GZip validation test data -->
     <file src="System.IO.Compression.TestData\GZTestData\GZTestDocument.doc" target="content\GZTestData\GZTestDocument.doc" />
     <file src="System.IO.Compression.TestData\GZTestData\GZTestDocument.doc.gz" target="content\GZTestData\GZTestDocument.doc.gz" />
     <file src="System.IO.Compression.TestData\GZTestData\GZTestDocument.docx" target="content\GZTestData\GZTestDocument.docx" />
@@ -26,6 +26,7 @@
     <file src="System.IO.Compression.TestData\GZTestData\GZTestDocument.txt" target="content\GZTestData\GZTestDocument.txt" />
     <file src="System.IO.Compression.TestData\GZTestData\GZTestDocument.txt.gz" target="content\GZTestData\GZTestDocument.txt.gz" />
     <file src="System.IO.Compression.TestData\GZTestData\README.txt" target="content\GZTestData\README.txt" />
+    <!-- ZipFile validation test data -->
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\CDoffsetInBoundsWrong.zip" target="content\ZipTestData\badzipfiles\CDoffsetInBoundsWrong.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\CDoffsetOutOfBounds.zip" target="content\ZipTestData\badzipfiles\CDoffsetOutOfBounds.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\compressedSizeOutOfBounds.zip" target="content\ZipTestData\badzipfiles\compressedSizeOutOfBounds.zip" />
@@ -106,6 +107,28 @@
     <file src="System.IO.Compression.TestData\ZipTestData\StrangeZipFiles\extradata\extraDataLHandCDentryAndArchiveComments.zip" target="content\ZipTestData\StrangeZipFiles\extradata\extraDataLHandCDentryAndArchiveComments.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\StrangeZipFiles\extradata\extraDataThenZip64.zip" target="content\ZipTestData\StrangeZipFiles\extradata\extraDataThenZip64.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\StrangeZipFiles\extradata\zip64ThenExtraData.zip" target="content\ZipTestData\StrangeZipFiles\extradata\zip64ThenExtraData.zip" />
-
+    <!-- GZip Performance test data -->
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\alice29.txt" target="content\GZTestData\Canterbury\alice29.txt" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\asyoulik.txt" target="content\GZTestData\Canterbury\asyoulik.txt" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\cp.html" target="content\GZTestData\Canterbury\cp.html" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\fields.c" target="content\GZTestData\Canterbury\fields.c" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\grammar.lsp" target="content\GZTestData\Canterbury\grammar.lsp" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\kennedy.xls" target="content\GZTestData\Canterbury\kennedy.xls" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\lcet10.txt" target="content\GZTestData\Canterbury\lcet10.txt" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\plrabn12.txt" target="content\GZTestData\Canterbury\plrabn12.txt" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\ptt5" target="content\GZTestData\Canterbury\ptt5" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\sum" target="content\GZTestData\Canterbury\sum" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\xargs.1" target="content\GZTestData\Canterbury\xargs.1" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\alice29.txt.gz" target="content\GZTestData\Canterbury\GZCompressed\alice29.txt.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\asyoulik.txt.gz" target="content\GZTestData\Canterbury\GZCompressed\asyoulik.txt.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\cp.html.gz" target="content\GZTestData\Canterbury\GZCompressed\cp.html.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\fields.c.gz" target="content\GZTestData\Canterbury\GZCompressed\fields.c.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\grammar.lsp.gz" target="content\GZTestData\Canterbury\GZCompressed\grammar.lsp.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\kennedy.xls.gz" target="content\GZTestData\Canterbury\GZCompressed\kennedy.xls.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\lcet10.txt.gz" target="content\GZTestData\Canterbury\GZCompressed\lcet10.txt.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\plrabn12.txt.gz" target="content\GZTestData\Canterbury\GZCompressed\plrabn12.txt.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\ptt5.gz" target="content\GZTestData\Canterbury\GZCompressed\ptt5.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\sum.gz" target="content\GZTestData\Canterbury\GZCompressed\sum.gz" />
+    <file src="System.IO.Compression.TestData\GZTestData\Canterbury\GZCompressed\xargs.1.gz" target="content\GZTestData\Canterbury\GZCompressed\xargs.1.gz" />
   </files>
 </package>

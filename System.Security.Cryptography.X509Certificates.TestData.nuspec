@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.Security.Cryptography.X509Certificates.TestData</id>
-    <version>1.0.0-prerelease</version>
+    <version>1.0.1-prerelease</version>
     <title>Test data for System.Security.Cryptography.X509Certificates tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -17,19 +17,20 @@
   </metadata>
   <files>
 
-    <file src="System.Security.Cryptography.X509Certificates.TestData\contoso.com.cer" target="content\TestData\contoso.com.cer" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\contoso.com.p7b" target="content\TestData\contoso.com.p7b" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\contoso.com.pfx" target="content\TestData\contoso.com.pfx" />
+    <file src="System.Security.Cryptography.X509Certificates.TestData\certchain.p7b" target="content\TestData\certchain.p7b" />
+    <file src="System.Security.Cryptography.X509Certificates.TestData\certchain.p7c" target="content\TestData\certchain.p7c" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\DummyTcpServer.pfx" target="content\TestData\DummyTcpServer.pfx" />
+    <file src="System.Security.Cryptography.X509Certificates.TestData\empty.p7b" target="content\TestData\empty.p7b" />
+    <file src="System.Security.Cryptography.X509Certificates.TestData\empty.p7c" target="content\TestData\empty.p7c" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\microsoft.cer" target="content\TestData\microsoft.cer" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\MS.cer" target="content\TestData\MS.cer" />
+    <file src="System.Security.Cryptography.X509Certificates.TestData\MS.pem" target="content\TestData\MS.pem" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\My.cer" target="content\TestData\My.cer" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\My.pfx" target="content\TestData\My.pfx" />
+    <file src="System.Security.Cryptography.X509Certificates.TestData\singlecert.p7b" target="content\TestData\singlecert.p7b" />
+    <file src="System.Security.Cryptography.X509Certificates.TestData\singlecert.p7c" target="content\TestData\singlecert.p7c" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\test.cer" target="content\TestData\test.cer" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\test.pfx" target="content\TestData\test.pfx" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\testclient1_at_contoso.com.cer" target="content\TestData\testclient1_at_contoso.com.cer" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\testclient1_at_contoso.com.p7b" target="content\TestData\testclient1_at_contoso.com.p7b" />
-    <file src="System.Security.Cryptography.X509Certificates.TestData\testclient1_at_contoso.com.pfx" target="content\TestData\testclient1_at_contoso.com.pfx" />
     <file src="System.Security.Cryptography.X509Certificates.TestData\Windows6.1-KB3004361-x64.msu" target="content\TestData\Windows6.1-KB3004361-x64.msu" />
 
   </files>

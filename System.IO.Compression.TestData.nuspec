@@ -58,6 +58,10 @@
     <file src="System.IO.Compression.TestData\ZipTestData\compat\windows.zip" target="content\ZipTestData\compat\windows.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\word.docx" target="content\ZipTestData\compat\word.docx" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\xceedstreaming.zip" target="content\ZipTestData\compat\xceedstreaming.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\net45_normal.zip" target="content\ZipTestData\compat\net45_normal.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\net46_normal.zip" target="content\ZipTestData\compat\net46_normal.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\net45_unicode.zip" target="content\ZipTestData\compat\net45_unicode.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\net46_unicode.zip" target="content\ZipTestData\compat\net46_unicode.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\modified\addFile\added.txt" target="content\ZipTestData\modified\addFile\added.txt" />
     <file src="System.IO.Compression.TestData\ZipTestData\modified\addFile\binary.wmv" target="content\ZipTestData\modified\addFile\binary.wmv" />
     <file src="System.IO.Compression.TestData\ZipTestData\modified\addFile\empty.file" target="content\ZipTestData\modified\addFile\empty.file" />

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.IO.Compression.TestData</id>
-    <version>1.0.3-prerelease</version>
+    <version>1.0.4-prerelease</version>
     <title>Test data for System.IO.Compression tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -42,6 +42,7 @@
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\nameSlashedAndNonzero.zip" target="content\ZipTestData\badzipfiles\nameSlashedAndNonzero.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\NORMAL.zip" target="content\ZipTestData\badzipfiles\NORMAL.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\badzipfiles\numberOfEntriesDifferent.zip" target="content\ZipTestData\badzipfiles\numberOfEntriesDifferent.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\deflate64.zip" target="content\ZipTestData\compat\deflate64.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\WindowsInvalid_FromUnix.zip" target="content\ZipTestData\compat\WindowsInvalid_FromUnix.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\WindowsInvalid_FromWindows.zip" target="content\ZipTestData\compat\WindowsInvalid_FromWindows.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\NullCharFileName_FromUnix.zip" target="content\ZipTestData\compat\NullCharFileName_FromUnix.zip" />
@@ -105,6 +106,7 @@
     <file src="System.IO.Compression.TestData\ZipTestData\refzipfolders\small\text.txt" target="content\ZipTestData\refzipfolders\small\text.txt" />
     <file src="System.IO.Compression.TestData\ZipTestData\refzipfolders\unicode\한글.txt" target="content\ZipTestData\refzipfolders\unicode\한글.txt" />
     <file src="System.IO.Compression.TestData\ZipTestData\refzipfolders\verysmall\small.txt" target="content\ZipTestData\refzipfolders\verysmall\small.txt" />
+    <file src="System.IO.Compression.TestData\ZipTestData\StrangeZipFiles\largetrailingwhitespacedeflation.zip" target="content\ZipTestData\StrangeZipFiles\largetrailingwhitespacedeflation.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\StrangeZipFiles\dataDescriptor.zip" target="content\ZipTestData\StrangeZipFiles\dataDescriptor.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\StrangeZipFiles\filenameTimeAndSizesDifferentInLH.zip" target="content\ZipTestData\StrangeZipFiles\filenameTimeAndSizesDifferentInLH.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\StrangeZipFiles\normalVerySmall.zip" target="content\ZipTestData\StrangeZipFiles\normalVerySmall.zip" />

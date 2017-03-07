@@ -23,5 +23,20 @@
     <file src="System.Net.TestData\testclient1_at_contoso.com.cer" target="content\TestData\testclient1_at_contoso.com.cer" />
     <file src="System.Net.TestData\testclient1_at_contoso.com.p7b" target="content\TestData\testclient1_at_contoso.com.p7b" />
     <file src="System.Net.TestData\testclient1_at_contoso.com.pfx" target="content\TestData\testclient1_at_contoso.com.pfx" />
+    <file src="System.Net.TestData\testclienteku.contoso.com.cer" target="content\TestData\testclienteku.contoso.com.cer" />
+    <file src="System.Net.TestData\testclienteku.contoso.com.p7b" target="content\TestData\testclienteku.contoso.com.p7b" />
+    <file src="System.Net.TestData\testclienteku.contoso.com.pfx" target="content\TestData\testclienteku.contoso.com.pfx" />
+    <file src="System.Net.TestData\testnoeku.contoso.com.cer" target="content\TestData\testnoeku.contoso.com.cer" />
+    <file src="System.Net.TestData\testnoeku.contoso.com.p7b" target="content\TestData\testnoeku.contoso.com.p7b" />
+    <file src="System.Net.TestData\testnoeku.contoso.com.pfx" target="content\TestData\testnoeku.contoso.com.pfx" />
+    <file src="System.Net.TestData\testselfsignedclienteku.contoso.com.cer" target="content\TestData\testselfsignedclienteku.contoso.com.cer" />
+    <file src="System.Net.TestData\testselfsignedclienteku.contoso.com.p7b" target="content\TestData\testselfsignedclienteku.contoso.com.p7b" />
+    <file src="System.Net.TestData\testselfsignedclienteku.contoso.com.pfx" target="content\TestData\testselfsignedclienteku.contoso.com.pfx" />
+    <file src="System.Net.TestData\testselfsignedservereku.contoso.com.cer" target="content\TestData\testselfsignedservereku.contoso.com.cer" />
+    <file src="System.Net.TestData\testselfsignedservereku.contoso.com.p7b" target="content\TestData\testselfsignedservereku.contoso.com.p7b" />
+    <file src="System.Net.TestData\testselfsignedservereku.contoso.com.pfx" target="content\TestData\testselfsignedservereku.contoso.com.pfx" />
+    <file src="System.Net.TestData\testservereku.contoso.com.cer" target="content\TestData\testservereku.contoso.com.cer" />
+    <file src="System.Net.TestData\testservereku.contoso.com.p7b" target="content\TestData\testservereku.contoso.com.p7b" />
+    <file src="System.Net.TestData\testservereku.contoso.com.pfx" target="content\TestData\testservereku.contoso.com.pfx" />
   </files>
 </package>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.IO.Compression.TestData</id>
-    <version>1.0.4-prerelease</version>
+    <version>1.0.5-prerelease</version>
     <title>Test data for System.IO.Compression tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -63,6 +63,9 @@
     <file src="System.IO.Compression.TestData\ZipTestData\compat\net46_normal.zip" target="content\ZipTestData\compat\net46_normal.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\net45_unicode.zip" target="content\ZipTestData\compat\net45_unicode.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\compat\net46_unicode.zip" target="content\ZipTestData\compat\net46_unicode.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\Linux_RW_RW_R__.zip" target="content\ZipTestData\compat\Linux_RW_RW_R__.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\Linux_RWXRW_R__.zip" target="content\ZipTestData\compat\Linux_RWXRW_R__.zip" />
+    <file src="System.IO.Compression.TestData\ZipTestData\compat\OSX_RWXRW_R__.zip" target="content\ZipTestData\compat\OSX_RWXRW_R__.zip" />
     <file src="System.IO.Compression.TestData\ZipTestData\modified\addFile\added.txt" target="content\ZipTestData\modified\addFile\added.txt" />
     <file src="System.IO.Compression.TestData\ZipTestData\modified\addFile\binary.wmv" target="content\ZipTestData\modified\addFile\binary.wmv" />
     <file src="System.IO.Compression.TestData\ZipTestData\modified\addFile\empty.file" target="content\ZipTestData\modified\addFile\empty.file" />

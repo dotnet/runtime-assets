@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.8.1">
+    <id>System.Drawing.Common.TestData</id>
+    <version>1.0.0</version>
+    <title>Test data for System.Drawing.Common tests</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkId=329770</licenseUrl>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkId=529047</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package provides test data that is used during the execution of the System.Drawing.Common tests.</description>
+    <summary>Provides test data used during the execution of the System.Drawing.Common tests.</summary>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>System.Drawing.Common TestData</tags>
+  </metadata>
+  <files>
+    <file src="System.Drawing.Common.TestData\bitmaps\10x16_one_entry_32bit.ico" target="content\bitmaps\10x16_one_entry_32bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\173x183_indexed_8bit.bmp" target="content\bitmaps\173x183_indexed_8bit.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\256x256_two_entries_multiple_bits.ico" target="content\bitmaps\256x256_two_entries_multiple_bits.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\48x48_multiple_entries_4bit.ico" target="content\bitmaps\48x48_multiple_entries_4bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\96x96_one_entry_8bit.ico" target="content\bitmaps\96x96_one_entry_8bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\16x16_nonindexed_24bit.png" target="content\bitmaps\16x16_nonindexed_24bit.png" />
+    <file src="System.Drawing.Common.TestData\bitmaps\256x256_one_entry_32bit.ico" target="content\bitmaps\256x256_one_entry_32bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\32x32_one_entry_4bit.ico" target="content\bitmaps\32x32_one_entry_4bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\48x48_one_entry_1bit.ico" target="content\bitmaps\48x48_one_entry_1bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\empty.file" target="content\bitmaps\empty.file" />
+    <file src="System.Drawing.Common.TestData\bitmaps\16x16_one_entry_4bit.ico" target="content\bitmaps\16x16_one_entry_4bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\256x256_seven_entries_multiple_bits.ico" target="content\bitmaps\256x256_seven_entries_multiple_bits.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\48x48_multiple_entries_32bit.ico" target="content\bitmaps\48x48_multiple_entries_32bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\64x64_one_entry_8bit.ico" target="content\bitmaps\64x64_one_entry_8bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\telescope_01.wmf" target="content\bitmaps\telescope_01.wmf" />
+  </files>
+</package>

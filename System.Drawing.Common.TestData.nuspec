@@ -31,5 +31,7 @@
     <file src="System.Drawing.Common.TestData\bitmaps\48x48_multiple_entries_32bit.ico" target="content\bitmaps\48x48_multiple_entries_32bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\64x64_one_entry_8bit.ico" target="content\bitmaps\64x64_one_entry_8bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\telescope_01.wmf" target="content\bitmaps\telescope_01.wmf" />
+    <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.otf" target="content\fonts\CodeNewRoman.otf" />
+    <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.ttf" target="content\fonts\CodeNewRoman.ttf" />
   </files>
 </package>

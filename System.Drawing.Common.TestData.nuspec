@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.Drawing.Common.TestData</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>Test data for System.Drawing.Common tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -17,7 +17,7 @@
   </metadata>
   <files>
     <file src="System.Drawing.Common.TestData\bitmaps\10x16_one_entry_32bit.ico" target="content\bitmaps\10x16_one_entry_32bit.ico" />
-    <file src="System.Drawing.Common.TestData\bitmaps\173x183_indexed_8bit.bmp" target="content\bitmaps\173x183_indexed_8bit.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\bitmap_173x183_indexed_8bit.bmp" target="content\bitmaps\bitmap_173x183_indexed_8bit.bmp" />
     <file src="System.Drawing.Common.TestData\bitmaps\256x256_two_entries_multiple_bits.ico" target="content\bitmaps\256x256_two_entries_multiple_bits.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\48x48_multiple_entries_4bit.ico" target="content\bitmaps\48x48_multiple_entries_4bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\96x96_one_entry_8bit.ico" target="content\bitmaps\96x96_one_entry_8bit.ico" />
@@ -30,6 +30,7 @@
     <file src="System.Drawing.Common.TestData\bitmaps\256x256_seven_entries_multiple_bits.ico" target="content\bitmaps\256x256_seven_entries_multiple_bits.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\48x48_multiple_entries_32bit.ico" target="content\bitmaps\48x48_multiple_entries_32bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\64x64_one_entry_8bit.ico" target="content\bitmaps\64x64_one_entry_8bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\invalid.ico" target="content\bitmaps\invalid.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\telescope_01.wmf" target="content\bitmaps\telescope_01.wmf" />
     <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.otf" target="content\fonts\CodeNewRoman.otf" />
     <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.ttf" target="content\fonts\CodeNewRoman.ttf" />

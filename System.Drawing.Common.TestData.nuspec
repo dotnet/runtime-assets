@@ -34,5 +34,6 @@
     <file src="System.Drawing.Common.TestData\bitmaps\telescope_01.wmf" target="content\bitmaps\telescope_01.wmf" />
     <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.otf" target="content\fonts\CodeNewRoman.otf" />
     <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.ttf" target="content\fonts\CodeNewRoman.ttf" />
+    <file src="System.Drawing.Common.TestData\colorProfiles\RSWOP.icm" target="content\colorProfiles\RSWOP.icm" />
   </files>
 </package>

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.Drawing.Common.TestData</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Test data for System.Drawing.Common tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -32,6 +32,25 @@
     <file src="System.Drawing.Common.TestData\bitmaps\64x64_one_entry_8bit.ico" target="content\bitmaps\64x64_one_entry_8bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\invalid.ico" target="content\bitmaps\invalid.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\telescope_01.wmf" target="content\bitmaps\telescope_01.wmf" />
+    <file src="System.Drawing.Common.TestData\bitmaps\1bit.png" target="System.Drawing.Common.TestData\bitmaps\1bit.png" />
+    <file src="System.Drawing.Common.TestData\bitmaps\4bit.png" target="System.Drawing.Common.TestData\bitmaps\4bit.png" />
+    <file src="System.Drawing.Common.TestData\bitmaps\81674-2bpp.png" target="System.Drawing.Common.TestData\bitmaps\81674-2bpp.png" />
+    <file src="System.Drawing.Common.TestData\bitmaps\81773-interlaced.gif" target="System.Drawing.Common.TestData\bitmaps\81773-interlaced.gif" />
+    <file src="System.Drawing.Common.TestData\bitmaps\VisualPng.ico" target="System.Drawing.Common.TestData\bitmaps\VisualPng.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\VisualPng1.ico" target="System.Drawing.Common.TestData\bitmaps\VisualPng1.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\almogaver-os2.bmp" target="System.Drawing.Common.TestData\bitmaps\almogaver-os2.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\almogaver1bit.bmp" target="ystem.Drawing.Common.TestData\bitmaps\almogaver1bit.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\almogaver24bits.bmp" target="System.Drawing.Common.TestData\bitmaps\almogaver24bits.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\almogaver24bits1.bmp" target="System.Drawing.Common.TestData\bitmaps\almogaver24bits1.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\almogaver32bits.bmp" target="System.Drawing.Common.TestData\bitmaps\almogaver32bits.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\almogaver32bits.tif" target="System.Drawing.Common.TestData\bitmaps\almogaver32bits.tif" />
+    <file src="System.Drawing.Common.TestData\bitmaps\maketransparent.bmp" target="System.Drawing.Common.TestData\bitmaps\maketransparent.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\milkmateya01.emf" target="System.Drawing.Common.TestData\bitmaps\milkmateya01.emf" />
+    <file src="System.Drawing.Common.TestData\bitmaps\nature-greyscale.jpg" target="System.Drawing.Common.TestData\bitmaps\nature-greyscale.jpg" />
+    <file src="System.Drawing.Common.TestData\bitmaps\nature24bits.gif" target="System.Drawing.Common.TestData\bitmaps\nature24bits.gif" />
+    <file src="System.Drawing.Common.TestData\bitmaps\nature24bits.jpg" target="System.Drawing.Common.TestData\bitmaps\nature24bits.jpg" />
+    <file src="System.Drawing.Common.TestData\bitmaps\nature24bits87.gif" target="System.Drawing.Common.TestData\bitmaps\nature24bits87.gif" />
+    <file src="System.Drawing.Common.TestData\bitmaps\non-inverted.bmp" target="System.Drawing.Common.TestData\bitmaps\non-inverted.bmp" />
     <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.otf" target="content\fonts\CodeNewRoman.otf" />
     <file src="System.Drawing.Common.TestData\fonts\CodeNewRoman.ttf" target="content\fonts\CodeNewRoman.ttf" />
     <file src="System.Drawing.Common.TestData\colorProfiles\RSWOP.icm" target="content\colorProfiles\RSWOP.icm" />

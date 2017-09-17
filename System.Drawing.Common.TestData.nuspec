@@ -23,6 +23,7 @@
     <file src="System.Drawing.Common.TestData\bitmaps\96x96_one_entry_8bit.ico" target="content\bitmaps\96x96_one_entry_8bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\16x16_nonindexed_24bit.png" target="content\bitmaps\16x16_nonindexed_24bit.png" />
     <file src="System.Drawing.Common.TestData\bitmaps\256x256_one_entry_32bit.ico" target="content\bitmaps\256x256_one_entry_32bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\415581.ico" target="content\bitmaps\415581.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\32x32_one_entry_4bit.ico" target="content\bitmaps\32x32_one_entry_4bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\48x48_one_entry_1bit.ico" target="content\bitmaps\48x48_one_entry_1bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\empty.file" target="content\bitmaps\empty.file" />

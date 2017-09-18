@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.Drawing.Common.TestData</id>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <title>Test data for System.Drawing.Common tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -23,6 +23,7 @@
     <file src="System.Drawing.Common.TestData\bitmaps\96x96_one_entry_8bit.ico" target="content\bitmaps\96x96_one_entry_8bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\16x16_nonindexed_24bit.png" target="content\bitmaps\16x16_nonindexed_24bit.png" />
     <file src="System.Drawing.Common.TestData\bitmaps\256x256_one_entry_32bit.ico" target="content\bitmaps\256x256_one_entry_32bit.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\415581.ico" target="content\bitmaps\415581.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\32x32_one_entry_4bit.ico" target="content\bitmaps\32x32_one_entry_4bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\48x48_one_entry_1bit.ico" target="content\bitmaps\48x48_one_entry_1bit.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\empty.file" target="content\bitmaps\empty.file" />
@@ -40,6 +41,7 @@
     <file src="System.Drawing.Common.TestData\bitmaps\VisualPng1.ico" target="content\bitmaps\VisualPng1.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\almogaver-os2.bmp" target="content\bitmaps\almogaver-os2.bmp" />
     <file src="System.Drawing.Common.TestData\bitmaps\almogaver1bit.bmp" target="content\bitmaps\almogaver1bit.bmp" />
+    <file src="System.Drawing.Common.TestData\bitmaps\almogaver8bits.bmp" target="content\bitmaps\almogaver8bits.bmp" />
     <file src="System.Drawing.Common.TestData\bitmaps\almogaver24bits.bmp" target="content\bitmaps\almogaver24bits.bmp" />
     <file src="System.Drawing.Common.TestData\bitmaps\almogaver24bits1.bmp" target="content\bitmaps\almogaver24bits1.bmp" />
     <file src="System.Drawing.Common.TestData\bitmaps\almogaver32bits.bmp" target="content\bitmaps\almogaver32bits.bmp" />

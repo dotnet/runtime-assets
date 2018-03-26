@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.8.1">
+    <id>System.Text.RegularExpressions.TestData</id>
+    <version>1.0.2</version>
+    <title>Test data for System.Text.RegularExpressions tests</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkId=329770</licenseUrl>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkId=529047</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package provides test data that is used during the execution of the System.Text.RegularExpressions tests.</description>
+    <summary>Provides test data used during the execution of the System.Text.RegularExpressions tests.</summary>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>System.Text.RegularExpressions TestData</tags>
+  </metadata>
+  <files>
+
+    <file src="System.Text.RegularExpressions.TestData\regexredux\1_000.in" target="content\regexredux\1_000.in" />
+    <file src="System.Text.RegularExpressions.TestData\regexredux\20_000.in" target="content\regexredux\20_000.in" />
+    <file src="System.Text.RegularExpressions.TestData\regexredux\50_000.in" target="content\regexredux\50_000.in" />
+    <file src="System.Text.RegularExpressions.TestData\regexredux\200_000.in" target="content\regexredux\200_000.in" />
+
+    <!-- 50MB unpacked: let's leave it out until we need it -->
+    <!--<file src="System.Text.RegularExpressions.TestData\regexredux\5_000_000.in" target="content\regexredux\5_000_000.in" />-->
+
+  </files>
+</package>

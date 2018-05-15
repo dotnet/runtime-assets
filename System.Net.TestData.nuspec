@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.Net.TestData</id>
-    <version>1.0.0-prerelease</version>
+    <version>1.0.1-prerelease</version>
     <title>Test data for System.Net tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>

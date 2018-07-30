@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.8.1">
+    <id>System.Windows.Extensions.TestData</id>
+    <version>1.0.0</version>
+    <title>Test data for System.Windows.Extensions tests</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://go.microsoft.com/fwlink/?LinkId=329770</licenseUrl>
+    <projectUrl>http://go.microsoft.com/fwlink/?LinkId=529047</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package provides test data that is used during the execution of the System.Windows.Extensions tests.</description>
+    <summary>Provides test data used during the execution of the System.Windows.Extensions tests.</summary>
+    <copyright>Copyright © Microsoft Corporation</copyright>
+    <tags>System.Windows.Extensions.TestData</tags>
+  </metadata>
+  <files>
+    <file src="System.Windows.Extensions\adpcm.wav" target="content\adpcm.wav" />
+    <file src="System.Windows.Extensions\ccitt.wav" target="content\ccitt.wav" />
+    <file src="System.Windows.Extensions\ima.wav" target="content\ima.wav" />
+    <file src="System.Windows.Extensions\pcm.wav" target="content\pcm.wav" />
+  </files>
+</package>

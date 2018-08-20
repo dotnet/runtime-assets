@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.Drawing.Common.TestData</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>Test data for System.Drawing.Common tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
@@ -37,6 +37,8 @@
     <file src="System.Drawing.Common.TestData\bitmaps\4bit.png" target="content\bitmaps\4bit.png" />
     <file src="System.Drawing.Common.TestData\bitmaps\81674-2bpp.png" target="content\bitmaps\81674-2bpp.png" />
     <file src="System.Drawing.Common.TestData\bitmaps\81773-interlaced.gif" target="content\bitmaps\81773-interlaced.gif" />
+    <file src="System.Drawing.Common.TestData\bitmaps\overflowicon.ico" target="content\bitmaps\overflowicon.ico" />
+    <file src="System.Drawing.Common.TestData\bitmaps\pngwithheight_icon.ico" target="content\bitmaps\pngwithheight_icon.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\VisualPng.ico" target="content\bitmaps\VisualPng.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\VisualPng1.ico" target="content\bitmaps\VisualPng1.ico" />
     <file src="System.Drawing.Common.TestData\bitmaps\almogaver-os2.bmp" target="content\bitmaps\almogaver-os2.bmp" />

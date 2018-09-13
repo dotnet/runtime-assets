@@ -16,9 +16,9 @@
     <tags>System.Windows.Extensions.TestData</tags>
   </metadata>
   <files>
-    <file src="System.Windows.Extensions\adpcm.wav" target="content\adpcm.wav" />
-    <file src="System.Windows.Extensions\ccitt.wav" target="content\ccitt.wav" />
-    <file src="System.Windows.Extensions\ima.wav" target="content\ima.wav" />
-    <file src="System.Windows.Extensions\pcm.wav" target="content\pcm.wav" />
+    <file src="System.Windows.Extensions.TestData\adpcm.wav" target="content\adpcm.wav" />
+    <file src="System.Windows.Extensions.TestData\ccitt.wav" target="content\ccitt.wav" />
+    <file src="System.Windows.Extensions.TestData\ima.wav" target="content\ima.wav" />
+    <file src="System.Windows.Extensions.TestData\pcm.wav" target="content\pcm.wav" />
   </files>
 </package>

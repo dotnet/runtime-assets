@@ -27,7 +27,7 @@ Open the file ```System.IO.Compression.TestData.nuspec```.
 Locate the ````<version>```` element. If the current version is:
 
 ````xml
-<version>1.0.8-prerelease</version>
+<version>1.0.7-prerelease</version>
 ````
 
 then bump it to:

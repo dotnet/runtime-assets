@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>System.IO.Compression.TestData</id>
-    <version>1.0.6-prerelease</version>
+    <version>1.0.7-prerelease</version>
     <title>Test data for System.IO.Compression tests</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>

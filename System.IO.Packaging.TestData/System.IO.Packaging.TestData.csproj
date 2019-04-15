@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageVersion>1.0.0-prerelease</PackageVersion>
+  </PropertyGroup>
+
+</Project>

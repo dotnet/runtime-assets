@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageVersion>1.0.3</PackageVersion>
+  </PropertyGroup>
+
+  <!-- 50MB unpacked: let's leave it out until we need it -->
+  <ItemGroup>
+    <Content Remove="regexredux\5_000_000.in" />
+  </ItemGroup>
+
+</Project>

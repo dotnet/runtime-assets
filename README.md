@@ -1,23 +1,35 @@
 # CoreFx-TestData
 
-This repository contains test assets that are binary file or too large to be checked into corefx directly. Packages are produced and uploaded to the [dotnet blob feed](https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json).
+This repository contains test assets that are binary files or too large to be checked into corefx directly. Packages are produced and uploaded to the dotnet blob feed: https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json.
 
 Uploading the packages is currently a manual step. Community members can submit PRs but the deployment needs to be done by a .NET team member as described below.
 
 ## Workflow
 
-For the examples provided in the steps below, we are going to make the following assumptions:
+1. Modify the \*.csproj project file(s) and increment the version number.
+2. Generate the nuget package file for your new test data using `dotnet pack`.
+3. Test that corefx can import the new nuget package file.
+4. Verify that you can consume the new test assets in your corefx unit tests.
+5. Submit a corefx-testdata PR with your new test assets and bumped version project file.
+6. Upload the nuget package file to the dotnet blob feed.
+7. Submit a corefx PR with your unit test changes that consume the new nuget package.
+
+
+## Example
+
+We are going to make the following assumptions:
 
 - We cloned the `dotnet/corefx-testdata` GitHub project in `D:\corefx-testdata`.
 - We cloned the `dotnet/corefx` GitHub project in `D:\corefx`.
 - We are working on adding a new unit test for the GZip feature from the `System.IO.Compression` namespace, and the test depends on a file called `example.gz`.
 
-#### 1. Modify the project files and increment the version number.
+#### 1. Modify the project file(s) and increment the version number.
 
-We decided to save our `example.gz` file in `corefx-testdata\System.IO.Compression.TestData\GZipTestData\example.gz`.
+Save `example.gz` inside `corefx-testdata\System.IO.Compression.TestData\GZipTestData`.
 
-Now we edit the `corefx-testdata\System.IO.Compression.TestData\System.IO.Compression.TestData.csproj` file and bump the patch fragment of the version number.
+Edit the `corefx-testdata\System.IO.Compression.TestData\System.IO.Compression.TestData.csproj` file and bump the patch fragment of the version number.
 
+*Note: if the version was 1.0.9, bump it to 1.0.10, not 1.1.0.*
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -27,12 +39,9 @@ Now we edit the `corefx-testdata\System.IO.Compression.TestData\System.IO.Compre
 </Project>
 ```
 
-*Note: if the version was 1.0.9, bump it to 1.0.10, not 1.1.0.*
+#### 2. Generate the nuget package file for your new test data using `dotnet pack`.
 
-
-#### 2. Generate the nuget package file for your new test data.
-
-From the directory where your *.csproj file is located, run `dotnet pack` and you'll get this output:
+From the directory where your *.csproj file is located, run `dotnet pack` and you'll get an output like this:
 
 ```
 P SD:\corefx-testdata\System.IO.Compression.TestData> dotnet pack
@@ -47,21 +56,12 @@ P SD:\corefx-testdata\System.IO.Compression.TestData> dotnet pack
 
 *Note: Running `dotnet pack` from the root of the `corefx-testdata` project will generate the nuget packages for all the \*.csproj files.*
 
-The generated nuget package file(s) will be located in the `bin\Debug` subfolder:
+The generated nuget file(s) will be located in the `bin\Debug` subfolder:
 
-```
-PS D:\corefx-testdata\System.IO.Compression.TestData> dir bin\Debug
-
-    Directory: D:\corefx-testdata\System.IO.Compression.TestData\bin\Debug
-
-    Mode                LastWriteTime         Length Name
-    ----                -------------         ------ ----
-    d-----       2019-05-09   2:16 PM                netstandard2.0
-    -a----       2019-05-09   3:10 PM       54412970 System.IO.Compression.TestData.1.0.10.nupkg
-```
+`D:\corefx-testdata\System.IO.Compression.TestData\bin\Debug\System.IO.Compression.TestData.1.0.10.nupkg`
 
 
-#### 3. Test your files locally.
+#### 3. Test that corefx can import the new nuget package file.
 
 We need to make sure our change works by importing the generated nuget package file into our corefx project.
 
@@ -93,21 +93,9 @@ PS D:\corefx> .\.dotnet\dotnet.exe msbuild .\external\test-runtime\XUnit.Runtime
  Now check if the nuget package was exported correctly. Go to your current user's nuget packages folder, usually located in `C:\Users\yourusername\.nuget\packages`. Find the folder for your TestData and inside you will find the original dependencies plus the new ones you added:
 
 ```
-PS C:\your\path\to\corefx> cd C:\Users\yourusername\.nuget\packages
+PS D:\corefx> dir C:\Users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10\
 
-PS C:\users\yourusername\.nuget\packages> dir System.IO.Compression.TestData
-
-    Directory: C:\users\yourusername\.nuget\packages\System.IO.Compression.TestData
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
-d-----        3/01/2019   9:54 PM                1.0.9
-d-----        3/25/2019   3:55 PM                1.0.10
-
-
-PS C:\users\yourusername\.nuget\packages> dir .\System.IO.Compression.TestData\1.0.10\
-
-    Directory: C:\users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10
+    Directory: C:\Users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
@@ -118,32 +106,18 @@ d-----        3/25/2019   3:55 PM                content
 -a----        3/25/2019   3:55 PM           1034 system.io.compression.testdata.nuspec
 
 
-PS C:\users\yourusername\.nuget\packages> dir .\System.IO.Compression.TestData\1.0.10\content\
-
-    Directory: C:\users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10\content
-
-Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
-...// many files
-d-----        3/25/2019   3:55 PM                GZipTestData
-...// many files
-
-
-PS C:\users\yourusername\.nuget\packages> dir .\System.IO.Compression.TestData\1.0.10\content\GZipTestData\
+PS D:\corefx> dir C:\Users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10\content\GZipTestData\
 
     Directory: C:\users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10\content\GZipTestData
 
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
-...// many files
 -a----        3/25/2019  3:55 PM           1748 example.gz
-...// many files
 
-```
 
-#### 4. Consume the nuget package in your corefx unit tests.
+#### 4. Verify that you can consume the new test assets in your corefx unit tests.
 
-You can now add this nuget package to your unit test *.csproj file in the SupplementalTestData section. For our example, we need to modify `corefx\src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj`:
+You can now add this nuget package to your unit test *.csproj file in the `<SupplementalTestData>` section. For our example, we need to modify `corefx\src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj`:
 
 ```xml
   <ItemGroup>
@@ -153,7 +127,7 @@ You can now add this nuget package to your unit test *.csproj file in the Supple
   </ItemGroup>
 ```
 
-#### 5. Submit a corefx-testdata PR with your changes.
+#### 5. Submit a corefx-testdata PR with your new test assets and bumped version project file.
 
 Any community member can submit corefx-data changes, but make sure to notify a .NET team member so they can help with step 6.
 
@@ -170,7 +144,7 @@ https://github.com/dotnet/core-eng/tree/master/Documentation/Tools/dotnet-core-p
 
 Make sure to clear the myget feed in the queue time variable section.
 
-#### 7. Submit a corefx PR with your changes.
+#### 7. Submit a corefx PR with your unit test changes that consume the new nuget package.
 
 Make sure your PR is submitted after the nuget package is officially located to the dotnet blob feed.
 

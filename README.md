@@ -8,10 +8,10 @@ Uploading the packages is currently a manual step. Community members can submit 
 
 1. Modify the \*.csproj project file(s) and increment the version number.
 2. Generate the nuget package file for your new test data using `dotnet pack`.
-3. Test that corefx can import the new nuget package file.
-4. Verify that you can consume the new test assets in your corefx unit tests.
+3. (Optional) Test that corefx can import the new nuget package file.
+4. (Optional) Verify that you can consume the new test assets in your corefx unit tests.
 5. Submit a corefx-testdata PR with your new test assets and bumped version project file.
-6. Upload the nuget package file to the dotnet blob feed.
+6. Upload the nuget package file to the dotnet blob feed (only .NET team members can do this). See: https://github.com/dotnet/core-eng/tree/master/Documentation/Tools/dotnet-core-push-oneoff-package
 7. Submit a corefx PR with your unit test changes that consume the new nuget package.
 
 
@@ -19,9 +19,10 @@ Uploading the packages is currently a manual step. Community members can submit 
 
 We are going to make the following assumptions:
 
-- We cloned the `dotnet/corefx-testdata` GitHub project in `D:\corefx-testdata`.
+- We cloned the `dotnet/corefx-testdata` GitHub repo in `D:\corefx-testdata`.
 - We cloned the `dotnet/corefx` GitHub project in `D:\corefx`.
 - We are working on adding a new unit test for the GZip feature from the `System.IO.Compression` namespace, and the test depends on a file called `example.gz`.
+- We already compiled corefx with `build.cmd`.
 
 #### 1. Modify the project file(s) and increment the version number.
 
@@ -90,10 +91,10 @@ PS D:\corefx> .\.dotnet\dotnet.exe msbuild .\external\test-runtime\XUnit.Runtime
      ...
 ```
 
- Now check if the nuget package was exported correctly. Go to your current user's nuget packages folder, usually located in `C:\Users\yourusername\.nuget\packages`. Find the folder for your TestData and inside you will find the original dependencies plus the new ones you added:
+ Now check if the nuget package was restored correctly. Go to your current user's nuget packages folder, usually located in `%UserProfile%\.nuget\packages`. Find the folder for your TestData and inside you should see a new folder with the new version of the package you produced:
 
 ```
-PS D:\corefx> dir C:\Users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10\
+PS D:\corefx> dir $Env:UserProfile\.nuget\packages\System.IO.Compression.TestData\1.0.10\
 
     Directory: C:\Users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10
 
@@ -106,7 +107,7 @@ d-----        3/25/2019   3:55 PM                content
 -a----        3/25/2019   3:55 PM           1034 system.io.compression.testdata.nuspec
 
 
-PS D:\corefx> dir C:\Users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10\content\GZipTestData\
+PS D:\corefx> dir $Env:UserProfile\.nuget\packages\System.IO.Compression.TestData\1.0.10\content\GZipTestData\
 
     Directory: C:\users\yourusername\.nuget\packages\System.IO.Compression.TestData\1.0.10\content\GZipTestData
 

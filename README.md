@@ -114,7 +114,7 @@ PS D:\corefx> dir $Env:UserProfile\.nuget\packages\System.IO.Compression.TestDat
 Mode                LastWriteTime         Length Name
 ----                -------------         ------ ----
 -a----        3/25/2019  3:55 PM           1748 example.gz
-
+```
 
 #### 4. Verify that you can consume the new test assets in your corefx unit tests.
 

@@ -1,0 +1,29 @@
+.NET Core uses third-party libraries or other resources that may be
+distributed under licenses different than the .NET Core software.
+
+Attributions and license notices for test cases originally authored by
+third parties can be found in the respective test directories.
+
+In the event that we accidentally failed to list a required notice, please
+bring it to our attention. Post an issue or email us:
+
+            dotnet@microsoft.com
+
+The attached notices are provided for information only.
+
+License notice for Stack Overflow
+-------------------------------------
+
+Policy: https://stackoverflow.com/help/licensing
+License: https://creativecommons.org/licenses/by-sa/3.0/
+
+Title: javascript regex iso datetime
+Content: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime#answer-3143231
+Question author: Scott -- https://stackoverflow.com/users/140811/scott
+Answer author: Brock Adams -- https://stackoverflow.com/users/331508/brock-adams
+
+Use: 
+
+* https://github.com/dotnet/corefx-testdata/blob/1b409ad29feded5e1723e67a37fe094c1c8d0a08/System.IO.Compression.TestData/UncompressedTestFiles/WebFiles/angular.js
+* https://github.com/dotnet/corefx-testdata/blob/1b409ad29feded5e1723e67a37fe094c1c8d0a08/System.IO.Compression.TestData/GZipTestData/WebFiles/angular.js.gz
+

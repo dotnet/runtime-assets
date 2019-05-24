@@ -12,7 +12,7 @@ bring it to our attention. Post an issue or email us:
 The attached notices are provided for information only.
 
 License notice for Stack Overflow
--------------------------------------
+---------------------------------
 
 Policy: https://stackoverflow.com/help/licensing
 License: https://creativecommons.org/licenses/by-sa/3.0/

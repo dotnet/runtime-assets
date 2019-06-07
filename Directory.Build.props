@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <IsPackable>true</IsPackable>
-    <ContentTargetFolders>content</ContentTargetFolders>
+    <ContentTargetFolders>contentFiles</ContentTargetFolders>
     <Title>Test data for $(MSBuildProjectName.Replace('.TestData', '')) tests</Title>
     <Description>This package provides test data that is used during the execution of the $(MSBuildProjectName.Replace('.TestData', '')) tests.</Description>
     <Authors>Microsoft</Authors>
@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="**\*" Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension);obj\**\*;bin\**\*" />
+    <None Include="**\*" Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension);obj\**\*;bin\**\*" Pack="true" PackageCopyToOutput="true" PackageFlatten="false" />
   </ItemGroup>
 
 </Project>

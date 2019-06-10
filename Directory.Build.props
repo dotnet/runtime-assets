@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="**\*" Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension);obj\**\*;bin\**\*" Pack="true" PackageCopyToOutput="true" PackageFlatten="false" />
+    <None Include="**\*" Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension);obj\**\*;bin\**\*" Pack="true" PackageCopyToOutput="true" PackagePath="contentFiles\any\any\" PackageFlatten="false" />
   </ItemGroup>
 
 </Project>

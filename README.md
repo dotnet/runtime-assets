@@ -12,7 +12,7 @@ Uploading the packages is currently a manual step. Community members can submit 
 4. (Optional) Verify that you can consume the new test assets in your corefx unit tests.
 5. Submit a corefx-testdata PR with your new test assets and bumped version project file.
 6. Upload the nuget package file to the dotnet blob feed (only .NET team members can do this). See: https://github.com/dotnet/core-eng/tree/master/Documentation/Tools/dotnet-core-push-oneoff-package
-7. Submit a corefx PR with your unit test changes that consume the new nuget package.
+7. Submit a corefx PR with your unit test changes that consume the new nuget package. Update the test data's package version here: https://github.com/dotnet/corefx/blob/master/eng/Versions.props#L67-L74.
 
 
 ## Example

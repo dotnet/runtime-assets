@@ -66,28 +66,31 @@ The generated nuget file(s) will be located in the `bin\Debug` subfolder:
 
 We need to make sure our change works by importing the generated nuget package file into our corefx project.
 
-Open the `corefx\external\test-runtime\XUnit.Runtime.depproj` file, find the `<PackageReference>` element for your TestData project and change the version to the same number you used in step 1.
+Open the `corefx\eng\Versions.props` file, find an xml item that ends with `<*TestDataPackageVersion>`, and begins with the namespace (without dots) for which you're adding a dependency. For our example, the element is called '<SystemIOCompressionTestDataPackageVersion>'. Bump the version to the one you used in step 1:
 
 ```xml
 <!-- Test Data -->
-<PackageReference Include="System.IO.Compression.TestData" Version="1.0.10" />
+...
+<SystemIOCompressionTestDataPackageVersion>1.0.10</SystemIOCompressionTestDataPackageVersion>
+...
 ```
 
-Now from the root of the `corefx` project, run the commands that will import the package file:
+**Note**: If the test data folder is being added to corefx-data for the first time, you need to add the above entry to `Versions.props`, and then edit your test project to consume it:
+
+corefx\src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj:
+```xml
+<ItemGroup>
+    <PackageReference Include="System.IO.Compression.TestData" Version="$(SystemIOCompressionTestDataPackageVersion)" ExcludeAssets="contentFiles" GeneratePathProperty="true" />
+    <None Include="$(PkgSystem_IO_Compression_TestData)\contentFiles\any\any\**\*" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+</ItemGroup>
+```
+
+
+Now restore the packages for your test project in corefx:
 
 ```
-PS D:\corefx> .\.dotnet\dotnet.exe restore .\external\test-runtime\XUnit.Runtime.depproj -s D:\corefx-testdata\System.IO.Compression.TestData\bin\Debug\
-    Restore completed in 1.08 sec for D:\corefx\external\test-runtime\XUnit.Runtime.depproj.
-
-PS D:\corefx> .\.dotnet\dotnet.exe msbuild .\external\test-runtime\XUnit.Runtime.depproj /t:rebuild
-
-    Microsoft (R) Build Engine version 16.1.67-preview+g13843078ee for .NET Core
-    Copyright (C) Microsoft Corporation. All rights reserved.
-
-    Restore completed in 292.24 ms for D:\corefx\external\test-runtime\XUnit.Runtime.depproj.
-
-     C:\Users\username\.nuget\packages\...
-     C:\Users\username\.nuget\packages\...
+PS D:\corefx> .\.dotnet\dotnet.exe restore src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj
+    Restore completed in 1.08 sec for ...
      ...
 ```
 

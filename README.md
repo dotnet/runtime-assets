@@ -95,6 +95,7 @@ Make sure you have a local package source defined in your nuget configuration. O
 </packageSources>
 ...
 ```
+**Important**: Do not commit this change!
 
 Now restore the packages for your test project in corefx:
 

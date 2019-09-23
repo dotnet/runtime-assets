@@ -9,10 +9,9 @@ Uploading the packages is currently a manual step. Community members can submit 
 1. Modify the \*.csproj project file(s) and increment the version number.
 2. Generate the nuget package file for your new test data using `dotnet pack`.
 3. (Optional) Test that corefx can import the new nuget package file.
-4. (Optional) Verify that you can consume the new test assets in your corefx unit tests.
-5. Submit a corefx-testdata PR with your new test assets and bumped version project file.
-6. Upload the nuget package file to the dotnet blob feed (only .NET team members can do this). See: https://github.com/dotnet/core-eng/tree/master/Documentation/Tools/dotnet-core-push-oneoff-package
-7. Submit a corefx PR with your unit test changes that consume the new nuget package. Update the test data's package version here: https://github.com/dotnet/corefx/blob/master/eng/Versions.props#L67-L74.
+4. Submit a corefx-testdata PR with your new test assets and bumped version project file.
+5. Upload the nuget package file to the dotnet blob feed (only .NET team members can do this). See: https://github.com/dotnet/core-eng/tree/master/Documentation/Tools/dotnet-core-push-oneoff-package
+6. Submit a corefx PR with your unit test changes that consume the new nuget package. Update the test data's package version here: https://github.com/dotnet/corefx/blob/master/eng/Versions.props#L67-L74.
 
 
 ## Example
@@ -66,29 +65,46 @@ The generated nuget file(s) will be located in the `bin\Debug` subfolder:
 
 We need to make sure our change works by importing the generated nuget package file into our corefx project.
 
-Open the `corefx\external\test-runtime\XUnit.Runtime.depproj` file, find the `<PackageReference>` element for your TestData project and change the version to the same number you used in step 1.
+Open the `corefx\eng\Versions.props` file, find an xml item that ends with `<*TestDataPackageVersion>`, and begins with the namespace (without dots) for which you're adding a dependency. For our example, the element is called '<SystemIOCompressionTestDataPackageVersion>'. Bump the version to the one you used in step 1:
 
 ```xml
 <!-- Test Data -->
-<PackageReference Include="System.IO.Compression.TestData" Version="1.0.10" />
+...
+<SystemIOCompressionTestDataPackageVersion>1.0.10</SystemIOCompressionTestDataPackageVersion>
+...
 ```
 
-Now from the root of the `corefx` project, run the commands that will import the package file:
+**Note**: If the test data folder is being added to corefx-data for the first time, you need to add the above entry to `Versions.props`, and then edit your test project to consume it:
+
+corefx\src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj:
+```xml
+<ItemGroup>
+    <PackageReference Include="System.IO.Compression.TestData" Version="$(SystemIOCompressionTestDataPackageVersion)" ExcludeAssets="contentFiles" GeneratePathProperty="true" />
+    <None Include="$(PkgSystem_IO_Compression_TestData)\contentFiles\any\any\**\*" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+</ItemGroup>
+```
+
+Make sure you have a local package source defined in your nuget configuration. Open the file `corefx\NuGet.config` and make sure there's an entry that points to the location where the nupkg file was saved in step 2:
+
+```xml
+...
+<packageSources>
+  ...
+  <add key="local" value="D:\corefx-testdata\System.IO.Compression.TestData\bin\Debug\" />
+  ...
+</packageSources>
+...
+```
+**Important**: Do not commit this change!
+
+Now restore the packages for your test project in corefx:
 
 ```
-PS D:\corefx> .\.dotnet\dotnet.exe restore .\external\test-runtime\XUnit.Runtime.depproj -s D:\corefx-testdata\System.IO.Compression.TestData\bin\Debug\
-    Restore completed in 1.08 sec for D:\corefx\external\test-runtime\XUnit.Runtime.depproj.
-
-PS D:\corefx> .\.dotnet\dotnet.exe msbuild .\external\test-runtime\XUnit.Runtime.depproj /t:rebuild
-
-    Microsoft (R) Build Engine version 16.1.67-preview+g13843078ee for .NET Core
-    Copyright (C) Microsoft Corporation. All rights reserved.
-
-    Restore completed in 292.24 ms for D:\corefx\external\test-runtime\XUnit.Runtime.depproj.
-
-     C:\Users\username\.nuget\packages\...
-     C:\Users\username\.nuget\packages\...
-     ...
+PS D:\corefx> .\.dotnet\dotnet.exe restore src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj
+  ...
+  Restore completed in 253.06 ms for D:\corefx\src\Common\tests\CoreFx.Private.TestUtilities\CoreFx.Private.TestUtilities.csproj.
+  Restore completed in 2.64 sec for D:\corefx\src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj. 
+  ...
 ```
 
  Now check if the nuget package was restored correctly. Go to your current user's nuget packages folder, usually located in `%UserProfile%\.nuget\packages`. Find the folder for your TestData and inside you should see a new folder with the new version of the package you produced:
@@ -116,19 +132,10 @@ Mode                LastWriteTime         Length Name
 -a----        3/25/2019  3:55 PM           1748 example.gz
 ```
 
-#### 4. Verify that you can consume the new test assets in your corefx unit tests.
+**Note**: If you made a mistake and need to update this version's file (in other words, you need to do steps 1-3 again), make sure to delete the directory `%UserProfile%\.nuget\packages\System.IO.Compression.TestData\1.0.10`, because it's not going to get overwritten.
 
-You can now add this nuget package to your unit test *.csproj file in the `<SupplementalTestData>` section. For our example, we need to modify `corefx\src\System.IO.Compression\tests\System.IO.Compression.Tests.csproj`:
 
-```xml
-  <ItemGroup>
-    <SupplementalTestData Include="$(PackagesDir)system.io.compression.testdata\1.0.10\content\**\*.*">
-      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
-    </SupplementalTestData>
-  </ItemGroup>
-```
-
-#### 5. Submit a corefx-testdata PR with your new test assets and bumped version project file.
+#### 4. Submit a corefx-testdata PR with your new test assets and bumped version project file.
 
 Any community member can submit corefx-data changes, but make sure to notify a .NET team member so they can help with step 6.
 
@@ -136,7 +143,7 @@ Your PR should include:
 - The new test data file(s) like `example.gz`.
 - The `*.csproj` file(s) with the bumped version.
 
-#### 6. Upload the nuget package file to the dotnet blob feed.
+#### 5. Upload the nuget package file to the dotnet blob feed.
 
 **Important: Only .NET team members can do this step.**
 
@@ -145,7 +152,7 @@ https://github.com/dotnet/core-eng/tree/master/Documentation/Tools/dotnet-core-p
 
 Make sure to clear the myget feed in the queue time variable section.
 
-#### 7. Submit a corefx PR with your unit test changes that consume the new nuget package.
+#### 6. Submit a corefx PR with your unit test changes that consume the new nuget package.
 
 Make sure your PR is submitted after the nuget package is officially located to the dotnet blob feed.
 

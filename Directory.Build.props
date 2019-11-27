@@ -25,4 +25,8 @@
           PackageFlatten="false" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+  </PropertyGroup>
+
 </Project>

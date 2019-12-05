@@ -1,9 +1,0 @@
-<Project>
-  <!--
-    We want to sign the nuget packages themselves but not their content.
-  -->
-  <ItemGroup>
-    <FileExtensionSignInfo Remove="@(FileExtensionSignInfo)" />
-    <FileExtensionSignInfo Include=".nupkg" CertificateName="NuGet" />
-  </ItemGroup>
-</Project>

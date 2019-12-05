@@ -1,4 +1,8 @@
 <Project>
   <PropertyGroup>
+    <!-- This repo version -->
+    <VersionPrefix>5.0.0</VersionPrefix>
+    <!-- Opt-out repo features -->
+    <UsingToolXliff>false</UsingToolXliff>
   </PropertyGroup>
 </Project>

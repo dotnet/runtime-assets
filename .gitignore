@@ -6,6 +6,7 @@ syntax: glob
 /[Tt]ools/
 .dotnet/
 .packages/
+.vs/
 
 # User-specific files
 *.suo
@@ -28,13 +29,6 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 msbuild.binlog
-
-# Visual Studio 2015
-.vs/
-
-# Visual Studio 2015 Pre-CTP6
-*.sln.ide
-*.ide/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

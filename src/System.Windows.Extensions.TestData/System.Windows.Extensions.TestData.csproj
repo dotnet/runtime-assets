@@ -1,7 +1,2 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <PackageVersion>1.0.5</PackageVersion>
-  </PropertyGroup>
-
 </Project>

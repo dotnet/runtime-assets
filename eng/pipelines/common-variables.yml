@@ -1,0 +1,12 @@
+variables:
+  # Cannot use key:value syntax in root defined variables
+  - name: _RunAsPublic
+    value: True
+  - name: _RunAsInternal
+    value: False
+
+  - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+    - name: _RunAsPublic
+      value: False
+    - name: _RunAsInternal
+      value: True

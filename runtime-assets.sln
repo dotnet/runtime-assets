@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.ComponentModel.TypeConverter.TestData", "System.ComponentModel.TypeConverter.TestData\System.ComponentModel.TypeConverter.TestData.csproj", "{1A88BAF3-D849-4608-A11E-B7C1954BD9F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.ComponentModel.TypeConverter.TestData", "src\System.ComponentModel.TypeConverter.TestData\System.ComponentModel.TypeConverter.TestData.csproj", "{1A88BAF3-D849-4608-A11E-B7C1954BD9F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Drawing.Common.TestData", "System.Drawing.Common.TestData\System.Drawing.Common.TestData.csproj", "{69DC875E-E318-4C7A-83EB-FCB2ECF61785}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Drawing.Common.TestData", "src\System.Drawing.Common.TestData\System.Drawing.Common.TestData.csproj", "{69DC875E-E318-4C7A-83EB-FCB2ECF61785}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.IO.Compression.TestData", "System.IO.Compression.TestData\System.IO.Compression.TestData.csproj", "{DED8E41F-BAE7-402C-A656-1187F2C82064}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.IO.Compression.TestData", "src\System.IO.Compression.TestData\System.IO.Compression.TestData.csproj", "{DED8E41F-BAE7-402C-A656-1187F2C82064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.IO.Packaging.TestData", "System.IO.Packaging.TestData\System.IO.Packaging.TestData.csproj", "{CA361558-DF13-48D2-BDA1-1F468352ACE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.IO.Packaging.TestData", "src\System.IO.Packaging.TestData\System.IO.Packaging.TestData.csproj", "{CA361558-DF13-48D2-BDA1-1F468352ACE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.TestData", "System.Net.TestData\System.Net.TestData.csproj", "{D05B44EC-6903-4CD8-95AC-14096D51BE26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.TestData", "src\System.Net.TestData\System.Net.TestData.csproj", "{D05B44EC-6903-4CD8-95AC-14096D51BE26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Security.Cryptography.X509Certificates.TestData", "System.Security.Cryptography.X509Certificates.TestData\System.Security.Cryptography.X509Certificates.TestData.csproj", "{71993558-D1D9-487D-A119-E3105CDE9C55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Security.Cryptography.X509Certificates.TestData", "src\System.Security.Cryptography.X509Certificates.TestData\System.Security.Cryptography.X509Certificates.TestData.csproj", "{71993558-D1D9-487D-A119-E3105CDE9C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Text.RegularExpressions.TestData", "System.Text.RegularExpressions.TestData\System.Text.RegularExpressions.TestData.csproj", "{A4E24DCF-46B0-493A-B328-9173E567693B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Text.RegularExpressions.TestData", "src\System.Text.RegularExpressions.TestData\System.Text.RegularExpressions.TestData.csproj", "{A4E24DCF-46B0-493A-B328-9173E567693B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Windows.Extensions.TestData", "System.Windows.Extensions.TestData\System.Windows.Extensions.TestData.csproj", "{BB874A4E-3388-44EB-B4DC-40C0F38572C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Windows.Extensions.TestData", "src\System.Windows.Extensions.TestData\System.Windows.Extensions.TestData.csproj", "{BB874A4E-3388-44EB-B4DC-40C0F38572C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

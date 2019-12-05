@@ -1,32 +1,45 @@
 <Project>
+  <Import Project="Sdk.props" Sdk="Microsoft.DotNet.Arcade.Sdk" />  
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- No target framework is being compiled into the package. -->
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <IsPackable>true</IsPackable>
     <ContentTargetFolders>contentFiles</ContentTargetFolders>
-    <Title>Test data for $(MSBuildProjectName.Replace('.TestData', '')) tests</Title>
-    <Description>This package provides test data that is used during the execution of the $(MSBuildProjectName.Replace('.TestData', '')) tests.</Description>
     <Authors>Microsoft</Authors>
-    <Copyright>Copyright © Microsoft Corporation</Copyright>
-    <PackageLicenseUrl>http://go.microsoft.com/fwlink/?LinkId=329770</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</PackageIconUrl>
-    <RepositoryUrl>http://go.microsoft.com/fwlink/?LinkId=529047</RepositoryUrl>
-    <PackageTags>$(MSBuildProjectName) TestData</PackageTags>
+    <IsTestDataProject Condition="$(MSBuildProjectName.EndsWith('.TestData'))">true</IsTestDataProject>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Copyright>$(CopyrightNetFoundation)</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <LangVersion>Latest</LangVersion>
+
+    <!--
+      Tools and packages produced by this repository support infrastructure and are not shipping on NuGet or via any other official channel.
+    -->
+    <IsShipping>false</IsShipping>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsTestDataProject)' == 'true'">
+    <PackageFriendlyProjectName>$(MSBuildProjectName.Replace('.TestData', ''))</PackageFriendlyProjectName>
+    <Title>Test data for $(PackageFriendlyProjectName) tests</Title>
+    <PackageTags>$(PackageFriendlyProjectName) TestData</PackageTags>
+    <Description>This package provides test data that is used during the execution of the $(PackageFriendlyProjectName) tests.</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="**/*"
-          Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension);obj\**\*;bin\**\*"
+          Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension)"
           Pack="true"
           PackageCopyToOutput="true"
           PackagePath="contentFiles/any/any/"
           PackageFlatten="false" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
-  </PropertyGroup>
-
 </Project>

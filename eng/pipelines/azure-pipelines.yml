@@ -61,7 +61,6 @@ stages:
           displayName: Windows Build / Publish
       - ${{ if eq(variables._RunAsPublic, True) }}:
         - job: Linux
-          container: LinuxContainer
           pool:
             vimage: 'ubuntu-latest'
           strategy:

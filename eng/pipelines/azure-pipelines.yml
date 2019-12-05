@@ -91,3 +91,4 @@ stages:
     parameters:
       enableSourceLinkValidation: false
       enableSigningValidation: false
+      enableNugetValidation: false

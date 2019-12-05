@@ -18,7 +18,7 @@ pr:
     - docs/*
     
 variables:
-- template: eng/common-variables.yml
+- template: common-variables.yml
 
 resources:
   containers:
@@ -89,3 +89,5 @@ stages:
 
 - ${{ if eq(variables._RunAsInternal, True) }}:
   - template: eng\common\templates\post-build\post-build.yml
+    parameters:
+      enableSourceLinkValidation: false

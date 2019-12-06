@@ -2,36 +2,8 @@
  "tool": "Credential Scanner",
  "suppressions": [
   {
-    "hash": "0E0YZYgXDH5VLqTAdje753CMvOBNp6qlxxd0ZXsZVHc=",
-    "_justification": "Testdata contoso.com.pfx"
-  },
-  {
-    "hash": "fzWXw4Km7xwCoakrbdmiFbV0rwJDZ7nQg=",
-    "_justification": "Testdata DummyTcpServer.pfx"
-  },
-  {
-    "hash": "F2CSmRq4HArrksJnlhjlGUR3iXaT+IZGJSZpQkn4ljY=",
-    "_justification": "Testdata testclient1_at_contoso.com.pfx"
-  },
-  {
-    "hash": "0E0YZYgXDH5VLqTAdje753CMvOBNp6qlxxd0ZXsZVHc=",
-    "_justification": "Testdata testclienteku.contoso.com.pfx"
-  },
-  {
-    "hash": "VlpcHGyDBqYX6BWKXsC9vDG1DmycPvujNDF0dUho+Eo=",
-    "_justification": "Testdata testnoeku.contoso.com.pfx"
-  },
-  {
-    "hash": "2dGdwBrIkYXsEqGz3A3KRsarfKG8R560nF5WMusaBoo=",
-    "_justification": "Testdata testselfsignedclienteku.contoso.com.pfx"
-  },
-  {
-    "hash": "2dGdwBrIkYXsEqGz3A3KRsarfKG8R560nF5WMusaBoo=",
-    "_justification": "Testdata testselfsignedservereku.contoso.com.pfx"
-  },
-  {
-    "hash": "0E0YZYgXDH5VLqTAdje753CMvOBNp6qlxxd0ZXsZVHc=",
-    "_justification": "Testdata testservereku.contoso.com.pfx"
+    "file": [ "DummyTcpServer.pfx", "testclienteku.contoso.com.pfx", "testnoeku.contoso.com.pfx", "testselfsignedclienteku.contoso.com.pfx", "testselfsignedservereku.contoso.com.pfx", "testservereku.contoso.com.pfx", "DummyTcpServer.pfx", "My.pfx", "test.pfx" ],
+    "_justification": "Testdata certs"
   }
  ]
 }

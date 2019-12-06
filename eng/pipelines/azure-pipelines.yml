@@ -56,8 +56,9 @@ stages:
           clean: true
         steps:
         - script: eng\common\cibuild.cmd
-            -configuration $(_BuildConfig) 
+            -configuration $(_BuildConfig)
             -prepareMachine
+            $(_InternalBuildArgs)
           displayName: Windows Build / Publish
       - ${{ if eq(variables._RunAsPublic, True) }}:
         - job: Linux

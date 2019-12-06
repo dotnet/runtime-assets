@@ -1,5 +1,9 @@
 variables:
   # Cannot use key:value syntax in root defined variables
+  - name: _TeamName
+    value: DotNetCore
+  - name: _DotNetArtifactsCategory
+    value: .NETCore
   - name: _RunAsPublic
     value: True
   - name: _RunAsInternal
@@ -10,3 +14,9 @@ variables:
       value: False
     - name: _RunAsInternal
       value: True
+    - name: _InternalBuildArgs
+      value: /p:TeamName=$(_TeamName)
+        /p:DotNetPublishToBlobFeed=true
+        /p:DotNetPublishUsingPipelines=true
+        /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
+        /p:OfficialBuildId=$(BUILD.BUILDNUMBER)

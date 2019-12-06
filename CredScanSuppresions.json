@@ -1,0 +1,37 @@
+{
+ "tool": "Credential Scanner",
+ "suppressions": [
+  {
+    "placeholder": "0E0YZYgXDH5VLqTAdje753CMvOBNp6qlxxd0ZXsZVHc=",
+    "_justification": "Testdata contoso.com.pfx"
+  },
+  {
+    "placeholder": "fzWXw4Km7xwCoakrbdmiFbV0rwJDZ7nQg=",
+    "_justification": "Testdata DummyTcpServer.pfx"
+  },
+  {
+    "placeholder": "F2CSmRq4HArrksJnlhjlGUR3iXaT+IZGJSZpQkn4ljY=",
+    "_justification": "Testdata testclient1_at_contoso.com.pfx"
+  },
+  {
+    "placeholder": "0E0YZYgXDH5VLqTAdje753CMvOBNp6qlxxd0ZXsZVHc=",
+    "_justification": "Testdata testclienteku.contoso.com.pfx"
+  },
+  {
+    "placeholder": "VlpcHGyDBqYX6BWKXsC9vDG1DmycPvujNDF0dUho+Eo=",
+    "_justification": "Testdata testnoeku.contoso.com.pfx"
+  },
+  {
+    "placeholder": "2dGdwBrIkYXsEqGz3A3KRsarfKG8R560nF5WMusaBoo=",
+    "_justification": "Testdata testselfsignedclienteku.contoso.com.pfx"
+  },
+  {
+    "placeholder": "2dGdwBrIkYXsEqGz3A3KRsarfKG8R560nF5WMusaBoo=",
+    "_justification": "Testdata testselfsignedservereku.contoso.com.pfx"
+  },
+  {
+    "placeholder": "0E0YZYgXDH5VLqTAdje753CMvOBNp6qlxxd0ZXsZVHc=",
+    "_justification": "Testdata testservereku.contoso.com.pfx"
+  },
+ ]
+}

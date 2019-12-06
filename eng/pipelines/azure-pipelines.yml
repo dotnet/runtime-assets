@@ -79,6 +79,6 @@ stages:
             displayName: Linux Build / Publish
 
 - ${{ if eq(variables._RunAsInternal, True) }}:
-  - template: eng\common\templates\post-build\post-build.yml
+  - template: /eng/common/templates/post-build/post-build.yml
     parameters:
       enableSourceLinkValidation: false

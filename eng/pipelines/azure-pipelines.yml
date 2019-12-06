@@ -18,12 +18,7 @@ pr:
     - docs/*
     
 variables:
-- template: eng/common-variables.yml
-
-resources:
-  containers:
-  - container: LinuxContainer
-    image: microsoft/dotnet-buildtools-prereqs:ubuntu-14.04-cross-0cd4667-20170319080304
+- template: common-variables.yml
 
 stages:
 - stage: build
@@ -45,11 +40,10 @@ stages:
         timeoutInMinutes: 90
         pool:
           ${{ if eq(variables._RunAsPublic, True) }}:
-            name: NetCorePublic-Pool
-            queue: BuildPool.Windows.10.Amd64.VS2017.Open
+            vmimage: 'windows-latest'
           ${{ if eq(variables._RunAsInternal, True) }}:
             name: NetCoreInternal-Pool
-            queue: BuildPool.Windows.10.Amd64.VS2017
+            queue: BuildPool.Windows.10.Amd64.VS2019
         strategy:
           matrix:
             Build_Release:
@@ -64,14 +58,11 @@ stages:
         - script: eng\common\cibuild.cmd
             -configuration $(_BuildConfig) 
             -prepareMachine
-            $(_InternalBuildArgs)
           displayName: Windows Build / Publish
       - ${{ if eq(variables._RunAsPublic, True) }}:
         - job: Linux
-          container: LinuxContainer
           pool:
-            name:  NetCorePublic-Pool
-            queue: BuildPool.Ubuntu.1604.Amd64.Open
+            vimage: 'ubuntu-latest'
           strategy:
             matrix:
               Build_Debug:
@@ -85,7 +76,9 @@ stages:
           - script: eng/common/cibuild.sh
               --configuration $(_BuildConfig)
               --prepareMachine
-            displayName: Unix Build / Publish
+            displayName: Linux Build / Publish
 
 - ${{ if eq(variables._RunAsInternal, True) }}:
   - template: eng\common\templates\post-build\post-build.yml
+    parameters:
+      enableSourceLinkValidation: false

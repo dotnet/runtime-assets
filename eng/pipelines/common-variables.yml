@@ -14,8 +14,10 @@ variables:
       value: False
     - name: _RunAsInternal
       value: True
+    - name: _SignType
+      value: real
     - name: _InternalBuildArgs
-      value: /p:TeamName=$(_TeamName)
+      value: /p:DotNetSignType=$(_SignType) /p:TeamName=$(_TeamName)
         /p:DotNetPublishToBlobFeed=true
         /p:DotNetPublishUsingPipelines=true
         /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)

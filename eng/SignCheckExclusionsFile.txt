@@ -1,0 +1,7 @@
+;; File passed to the SignCheck tool for exclusions
+
+;; Contains invalid archive headers that can't be signed.
+*System.IO.Compression.TestData*.nupkg;;
+
+;; Some assets which are intentionally unsigned.
+*.otf|*.ttf|*.msu;*nupkg;

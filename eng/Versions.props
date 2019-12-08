@@ -6,5 +6,6 @@
     <!-- Opt-out repo features -->
     <UsingToolXliff>false</UsingToolXliff>
     <UsingToolSymbolUploader>false</UsingToolSymbolUploader>
+    <UsingToolPdbConverter>false</UsingToolPdbConverter>
   </PropertyGroup>
 </Project>

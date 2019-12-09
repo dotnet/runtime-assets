@@ -1,2 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Title>Unicode data files for dotnet runtime consumption</Title>
+    <PackageTags>Unicode UCD</PackageTags>
+    <Description>This package provides selected Unicode data files from https://www.unicode.org/Public/ for use by the dotnet runtime and its tests. See the readme file in that directory for more information.</Description>
+  </PropertyGroup>
 </Project>

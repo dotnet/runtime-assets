@@ -2,7 +2,10 @@
   <PropertyGroup>
     <!-- This repo version -->
     <VersionPrefix>5.0.0</VersionPrefix>
+    <PreReleaseVersionLabel>beta</PreReleaseVersionLabel>
     <!-- Opt-out repo features -->
     <UsingToolXliff>false</UsingToolXliff>
+    <UsingToolSymbolUploader>false</UsingToolSymbolUploader>
+    <UsingToolPdbConverter>false</UsingToolPdbConverter>
   </PropertyGroup>
 </Project>

@@ -84,3 +84,4 @@ stages:
     parameters:
       enableSourceLinkValidation: false
       enableSigningValidation: false
+      symbolPublishingAdditionalParameters: /p:PublishToSymbolServer=false

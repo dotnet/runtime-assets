@@ -18,6 +18,5 @@ variables:
       value: real
     - name: _InternalBuildArgs
       value: /p:DotNetSignType=$(_SignType) /p:TeamName=$(_TeamName)
-        /p:PublishToSymbolServer=false
         /p:DotNetPublishUsingPipelines=true
         /p:OfficialBuildId=$(BUILD.BUILDNUMBER)

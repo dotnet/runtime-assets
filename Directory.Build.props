@@ -44,6 +44,7 @@
     <None Include="**/*"
           Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension)"
           Pack="true"
+          BuildAction="Content"
           PackageCopyToOutput="true"
           PackagePath="contentFiles/any/any/"
           PackageFlatten="false" />

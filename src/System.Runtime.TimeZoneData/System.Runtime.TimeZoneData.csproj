@@ -15,18 +15,17 @@
         <Area Include="northamerica" />
         <Area Include="southamerica" />
     </ItemGroup>
-    <ItemGroup>
-    </ItemGroup>
-    <Target Name="DownloadData" BeforeTargets="Build" Condition="!Exists('$(OutputFolder)')">
+    <Target Name="UpdateData">
         <DownloadFile
             SourceUrl="$(TimeZoneSource)-$(TimeZoneDataVersion)/%(Area.Identity)"
-            DestinationFolder= "$(InputFolder)">
+            DestinationFolder="$(InputFolder)">
         </DownloadFile>
         <DownloadFile
             SourceUrl="$(TimeZoneSource)-$(TimeZoneDataVersion)/zone1970.tab"
-            DestinationFolder= "$(OutputFolder)">
+            DestinationFolder="$(OutputFolder)">
         </DownloadFile>
+    </Target>
+    <Target Name="CompileData" BeforeTargets="Build">
         <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
-        <RemoveDir Directories="$(InputFolder)" />
-    </Target>	
+    </Target>
 </Project>

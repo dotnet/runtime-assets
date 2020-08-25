@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Text.RegularExpressi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Windows.Extensions.TestData", "src\System.Windows.Extensions.TestData\System.Windows.Extensions.TestData.csproj", "{BB874A4E-3388-44EB-B4DC-40C0F38572C8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3C7C9597-003A-4216-A7BA-8215AAD5F81B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Runtime.TimeZoneData", "src\System.Runtime.TimeZoneData\System.Runtime.TimeZoneData.csproj", "{B1A890B0-F851-45A0-95D4-FA739061EC36}"
 EndProject
 Global

@@ -1,31 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-      <TimeZoneDataVersion>2020a</TimeZoneDataVersion>
-      <TimeZoneSource>https://data.iana.org/time-zones/tzdb</TimeZoneSource>
-      <InputFolder>$(MSBuildProjectDirectory)/input</InputFolder>
-      <OutputFolder>$(MSBuildProjectDirectory)/zoneinfo</OutputFolder>
-    </PropertyGroup>
-    <ItemGroup>
-        <Area Include="africa" />
-        <Area Include="antarctica" />
-        <Area Include="asia" />
-        <Area Include="australasia" />
-        <Area Include="etcetera" />
-        <Area Include="europe" />
-        <Area Include="northamerica" />
-        <Area Include="southamerica" />
-    </ItemGroup>
-    <Target Name="UpdateData">
-        <DownloadFile
-            SourceUrl="$(TimeZoneSource)-$(TimeZoneDataVersion)/%(Area.Identity)"
-            DestinationFolder="$(InputFolder)">
-        </DownloadFile>
-        <DownloadFile
-            SourceUrl="$(TimeZoneSource)-$(TimeZoneDataVersion)/zone1970.tab"
-            DestinationFolder="$(OutputFolder)">
-        </DownloadFile>
-    </Target>
-    <Target Name="CompileData" BeforeTargets="Build">
-        <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
-    </Target>
+  <PropertyGroup>
+    <TimeZoneDataVersion>2020a</TimeZoneDataVersion>
+    <InputFolder>$(IntermediateOutputPath)input</InputFolder>
+    <OutputFolder>$(IntermediateOutputPath)zoneinfo</OutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Area Include="africa" />
+    <Area Include="antarctica" />
+    <Area Include="asia" />
+    <Area Include="australasia" />
+    <Area Include="etcetera" />
+    <Area Include="europe" />
+    <Area Include="northamerica" />
+    <Area Include="southamerica" />
+  </ItemGroup>
+  <Target Name="UpdateData">
+    <DownloadFile
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
+      DestinationFolder="$(InputFolder)">
+    </DownloadFile>
+    <DownloadFile
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
+      DestinationFolder="$(OutputFolder)">
+    </DownloadFile>
+  </Target>
+  <Target Name="CompileData" BeforeTargets="Build" Condition="Exists('$(InputFolder)')">
+    <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
+  </Target>
 </Project>

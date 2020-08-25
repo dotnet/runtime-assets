@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <TimeZoneDataVersion>2020a</TimeZoneDataVersion>
+      <TimeZoneSource>https://data.iana.org/time-zones/tzdb</TimeZoneSource>
+      <InputFolder>$(MSBuildProjectDirectory)/input</InputFolder>
+      <OutputFolder>$(MSBuildProjectDirectory)/zoneinfo</OutputFolder>
+    </PropertyGroup>
+    <ItemGroup>
+        <Area Include="africa" />
+        <Area Include="antarctica" />
+        <Area Include="asia" />
+        <Area Include="australasia" />
+        <Area Include="etcetera" />
+        <Area Include="europe" />
+        <Area Include="northamerica" />
+        <Area Include="southamerica" />
+    </ItemGroup>
+    <ItemGroup>
+    </ItemGroup>
+    <Target Name="DownloadData" BeforeTargets="Build" Condition="!Exists('$(OutputFolder)')">
+        <DownloadFile
+            SourceUrl="$(TimeZoneSource)-$(TimeZoneDataVersion)/%(Area.Identity)"
+            DestinationFolder= "$(InputFolder)">
+        </DownloadFile>
+        <DownloadFile
+            SourceUrl="$(TimeZoneSource)-$(TimeZoneDataVersion)/zone1970.tab"
+            DestinationFolder= "$(OutputFolder)">
+        </DownloadFile>
+        <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
+        <RemoveDir Directories="$(InputFolder)" />
+    </Target>	
+</Project>

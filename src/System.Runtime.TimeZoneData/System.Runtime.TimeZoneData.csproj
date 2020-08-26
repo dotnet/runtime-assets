@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TimeZoneDataVersion>2020a</TimeZoneDataVersion>
+    <OutputFolder>$(MSBuildProjectDirectory)/data</OutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Area Include="africa" />
+    <Area Include="antarctica" />
+    <Area Include="asia" />
+    <Area Include="australasia" />
+    <Area Include="etcetera" />
+    <Area Include="europe" />
+    <Area Include="northamerica" />
+    <Area Include="southamerica" />
+  </ItemGroup>
+  <Target Name="UpdateData">
+    <DownloadFile
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
+      DestinationFolder="$(OutputFolder)">
+    </DownloadFile>
+    <DownloadFile
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
+      DestinationFolder="$(OutputFolder)">
+    </DownloadFile>
+  </Target>
+</Project>

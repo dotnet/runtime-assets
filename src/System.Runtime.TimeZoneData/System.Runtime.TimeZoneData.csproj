@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TimeZoneDataVersion>2020a</TimeZoneDataVersion>
-    <InputFolder>$(IntermediateOutputPath)input</InputFolder>
-    <OutputFolder>$(IntermediateOutputPath)zoneinfo</OutputFolder>
+    <OutputFolder>$(MSBuildProjectDirectory)/data</OutputFolder>
   </PropertyGroup>
   <ItemGroup>
     <Area Include="africa" />
@@ -17,14 +16,11 @@
   <Target Name="UpdateData">
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
-      DestinationFolder="$(InputFolder)">
+      DestinationFolder="$(OutputFolder)">
     </DownloadFile>
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
       DestinationFolder="$(OutputFolder)">
     </DownloadFile>
-  </Target>
-  <Target Name="CompileData" BeforeTargets="Build" Condition="Exists('$(InputFolder)')">
-    <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
   </Target>
 </Project>

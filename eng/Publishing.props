@@ -2,5 +2,6 @@
   <PropertyGroup>
     <!-- Tells Arcade SDK to not assume that .nupkg contains Portable PDBs -->
     <AutoGenerateSymbolPackages>false</AutoGenerateSymbolPackages>
+    <PublishingVersion>3</PublishingVersion>
   </PropertyGroup>
 </Project>

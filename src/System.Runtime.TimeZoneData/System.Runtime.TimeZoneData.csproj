@@ -13,6 +13,21 @@
     <Area Include="northamerica" />
     <Area Include="southamerica" />
   </ItemGroup>
+  <Target Name="CheckVersion">
+    <DownloadFile
+      SourceUrl="https://data.iana.org/time-zones/tzdb/version"
+      DestinationFolder="$(OutputFolder)">
+      <Output TaskParameter="DownloadedFile"
+      ItemName="VersionFile"/>
+    </DownloadFile>
+    <ReadLinesFromFile
+      File="@(VersionFile)">
+      <Output
+        TaskParameter="Lines"
+        ItemName="VersionLines"/>
+    </ReadLinesFromFile>
+    <Warning Text="TimeZoneDataVerson does not match https://data.iana.org/time-zones/tzdb/version" Condition="'@(VersionLines)' != '$(TimeZoneDataVersion)'" />
+  </Target>
   <Target Name="UpdateData">
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"

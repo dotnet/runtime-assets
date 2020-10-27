@@ -5,14 +5,14 @@
     <UpdateCondition>false</UpdateCondition>
   </PropertyGroup>
   <ItemGroup>
-    <Area Include="africa"/>
-    <Area Include="antarctica"/>
-    <Area Include="asia"/>
-    <Area Include="australasia"/>
-    <Area Include="etcetera"/>
-    <Area Include="europe"/>
-    <Area Include="northamerica"/>
-    <Area Include="southamerica"/>
+    <Area Include="africa" />
+    <Area Include="antarctica" />
+    <Area Include="asia" />
+    <Area Include="australasia" />
+    <Area Include="etcetera" />
+    <Area Include="europe" />
+    <Area Include="northamerica" />
+    <Area Include="southamerica" />
   </ItemGroup>
   <Target Name="CheckVersion" BeforeTargets="UpdateData">
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version" DestinationFolder="$(OutputFolder)">

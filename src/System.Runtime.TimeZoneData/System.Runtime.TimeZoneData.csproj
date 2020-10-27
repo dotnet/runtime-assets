@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TimeZoneDataVersion>2020a</TimeZoneDataVersion>
     <OutputFolder>$(MSBuildProjectDirectory)/data</OutputFolder>
+    <UpdateCondition>false</UpdateCondition>
   </PropertyGroup>
   <ItemGroup>
     <Area Include="africa" />
@@ -13,13 +14,32 @@
     <Area Include="northamerica" />
     <Area Include="southamerica" />
   </ItemGroup>
-  <Target Name="UpdateData">
-    <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
+  <Target Name="CheckVersion" BeforeTargets="UpdateData">
+    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version" DestinationFolder="$(OutputFolder)">
+      <Output TaskParameter="DownloadedFile" ItemName="VersionFile" />
+    </DownloadFile>
+    <ReadLinesFromFile File="@(VersionFile)">
+      <Output TaskParameter="Lines" ItemName="VersionLines" />
+    </ReadLinesFromFile> 
+
+    <PropertyGroup>
+      <UpdateCondition Condition="'@(VersionLines)' != '$(TimeZoneDataVersion)'">true</UpdateCondition>
+      <TimeZoneDataVersion>@(VersionLines)</TimeZoneDataVersion>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="UpdateData" AfterTargets="CheckVersion">
+    <!-- <Warning Text="$(TimeZoneDataVersion)" /> -->
+    <DownloadFile 
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)" 
+      DestinationFolder="$(OutputFolder)">
+    </DownloadFile>
+    <DownloadFile 
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab" 
       DestinationFolder="$(OutputFolder)">
     </DownloadFile>
     <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward"
       DestinationFolder="$(OutputFolder)">
     </DownloadFile>
   </Target>

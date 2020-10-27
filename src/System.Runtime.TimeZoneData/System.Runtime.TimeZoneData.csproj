@@ -15,7 +15,9 @@
     <Area Include="southamerica" />
   </ItemGroup>
   <Target Name="CheckVersion" BeforeTargets="UpdateData">
-    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version" DestinationFolder="$(OutputFolder)">
+    <DownloadFile 
+      SourceUrl="https://data.iana.org/time-zones/tzdb/version" 
+      DestinationFolder="$(OutputFolder)">
       <Output TaskParameter="DownloadedFile" ItemName="VersionFile"/>
     </DownloadFile>
     <ReadLinesFromFile File="@(VersionFile)">
@@ -29,15 +31,16 @@
   </Target>
 
   <Target Name="UpdateData" AfterTargets="CheckVersion">
-    <!-- <Warning Text="$(TimeZoneDataVersion)" /> -->
-    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)" DestinationFolder="$(OutputFolder)">
+    <DownloadFile 
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)" 
+      DestinationFolder="$(OutputFolder)">
     </DownloadFile>
-    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab" DestinationFolder="$(OutputFolder)">
+    <DownloadFile 
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab" 
+      DestinationFolder="$(OutputFolder)">
     </DownloadFile>
-    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward" DestinationFolder="$(OutputFolder)">
-    </DownloadFile>
-    <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward"
+    <DownloadFile 
+      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward" 
       DestinationFolder="$(OutputFolder)">
     </DownloadFile>
   </Target>

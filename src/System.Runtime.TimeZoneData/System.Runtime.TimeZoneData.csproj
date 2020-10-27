@@ -5,21 +5,21 @@
     <UpdateCondition>false</UpdateCondition>
   </PropertyGroup>
   <ItemGroup>
-    <Area Include="africa" />
-    <Area Include="antarctica" />
-    <Area Include="asia" />
-    <Area Include="australasia" />
-    <Area Include="etcetera" />
-    <Area Include="europe" />
-    <Area Include="northamerica" />
-    <Area Include="southamerica" />
+    <Area Include="africa"/>
+    <Area Include="antarctica"/>
+    <Area Include="asia"/>
+    <Area Include="australasia"/>
+    <Area Include="etcetera"/>
+    <Area Include="europe"/>
+    <Area Include="northamerica"/>
+    <Area Include="southamerica"/>
   </ItemGroup>
   <Target Name="CheckVersion" BeforeTargets="UpdateData">
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version" DestinationFolder="$(OutputFolder)">
-      <Output TaskParameter="DownloadedFile" ItemName="VersionFile" />
+      <Output TaskParameter="DownloadedFile" ItemName="VersionFile"/>
     </DownloadFile>
     <ReadLinesFromFile File="@(VersionFile)">
-      <Output TaskParameter="Lines" ItemName="VersionLines" />
+      <Output TaskParameter="Lines" ItemName="VersionLines"/>
     </ReadLinesFromFile> 
 
     <PropertyGroup>
@@ -30,13 +30,11 @@
 
   <Target Name="UpdateData" AfterTargets="CheckVersion">
     <!-- <Warning Text="$(TimeZoneDataVersion)" /> -->
-    <DownloadFile 
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)" 
-      DestinationFolder="$(OutputFolder)">
+    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)" DestinationFolder="$(OutputFolder)">
     </DownloadFile>
-    <DownloadFile 
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab" 
-      DestinationFolder="$(OutputFolder)">
+    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab" DestinationFolder="$(OutputFolder)">
+    </DownloadFile>
+    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward" DestinationFolder="$(OutputFolder)">
     </DownloadFile>
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward"

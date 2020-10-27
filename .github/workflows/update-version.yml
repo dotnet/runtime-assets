@@ -6,7 +6,7 @@ name: Check TimeZone Version
 # events but only for the master branch
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '0 0 * * 0'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,16 +19,27 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Edit XML
-        uses: Mudlet/xmlstarlet-action@v1.1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.100-rc.2.20479.15
+      - name: Build with dotnet
+        run: dotnet build src/System.Runtime.TimeZoneData /t:CheckVersion 
       - name: Read version
         id: version
         uses: juliangruber/read-file-action@v1
         with:
           path: ./src/System.Runtime.TimeZoneData/data/version
-
-      # Check for updates to Timezone version
-      - name: Check for updates
-        run: dotnet build /t:CheckVersion
-      - name: Set version from file
-        run: echo {{ steps.version.outputs.content }}            
+      - name: Check outputs
+        run: echo ${{ steps.version.outputs.content }}
+      - name: Edit XML
+        uses: Mudlet/xmlstarlet-action@v1.1
+        with: 
+          args: ed -O -P --inplace -u "/Project/PropertyGroup/TimeZoneDataVersion" -v ${{ steps.version.outputs.content }} src/System.Runtime.TimeZoneData/System.Runtime.TimeZoneData.csproj   
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3    
+        with: 
+          title: Update IANA Timezone version
+          branch: auto-update-tz-ver
+          delete-branch: true   

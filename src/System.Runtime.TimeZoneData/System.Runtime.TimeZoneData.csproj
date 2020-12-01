@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TimeZoneDataVersion>2020d</TimeZoneDataVersion>
+    <InputFolder>$(MSBuildProjectDirectory)/input</InputFolder>
     <OutputFolder>$(MSBuildProjectDirectory)/data</OutputFolder>
   </PropertyGroup>
   <ItemGroup>
@@ -12,11 +13,12 @@
     <Area Include="europe" />
     <Area Include="northamerica" />
     <Area Include="southamerica" />
+    <Area Include="backward" />
   </ItemGroup>
   <Target Name="CheckVersion">
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb/version"
-      DestinationFolder="$(OutputFolder)">
+      DestinationFolder="$(InputFolder)">
       <Output TaskParameter="DownloadedFile"
       ItemName="VersionFile"/>
     </DownloadFile>
@@ -31,15 +33,15 @@
   <Target Name="UpdateData">
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
-      DestinationFolder="$(OutputFolder)">
+      DestinationFolder="$(InputFolder)">
     </DownloadFile>
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
       DestinationFolder="$(OutputFolder)">
     </DownloadFile>
-    <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward"
-      DestinationFolder="$(OutputFolder)">
-    </DownloadFile>
+  </Target>
+  <Target Name="CompileTimeZoneData" AfterTargets="UpdateData">
+    <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
+    <RemoveDir Directories="$(InputFolder)" />
   </Target>
 </Project>

@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TimeZoneDataVersion>2020d</TimeZoneDataVersion>
+    <InputFolder>$(MSBuildProjectDirectory)/input</InputFolder>
     <OutputFolder>$(MSBuildProjectDirectory)/data</OutputFolder>
   </PropertyGroup>
   <ItemGroup>
@@ -12,11 +13,12 @@
     <Area Include="europe" />
     <Area Include="northamerica" />
     <Area Include="southamerica" />
+    <Area Include="backward" />
   </ItemGroup>
   <Target Name="CheckVersion">
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb/version"
-      DestinationFolder="$(OutputFolder)">
+      DestinationFolder="$(InputFolder)">
       <Output TaskParameter="DownloadedFile"
       ItemName="VersionFile"/>
     </DownloadFile>
@@ -29,17 +31,19 @@
     <Warning Text="TimeZoneDataVerson does not match https://data.iana.org/time-zones/tzdb/version" Condition="'@(VersionLines)' != '$(TimeZoneDataVersion)'" />
   </Target>
   <Target Name="UpdateData">
+    <RemoveDir Directories="$(OutputFolder)" />
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
-      DestinationFolder="$(OutputFolder)">
+      DestinationFolder="$(InputFolder)">
     </DownloadFile>
     <DownloadFile
       SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
-      DestinationFolder="$(OutputFolder)">
+      DestinationFolder="$(OutputFolder)"
+      DestinationFileName="zone.tab">
     </DownloadFile>
-    <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/backward"
-      DestinationFolder="$(OutputFolder)">
-    </DownloadFile>
+  </Target>
+  <Target Name="CompileTimeZoneData" AfterTargets="UpdateData">
+    <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
+    <RemoveDir Directories="$(InputFolder)" />
   </Target>
 </Project>

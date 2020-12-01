@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TimeZoneDataVersion>2020a</TimeZoneDataVersion>
+    <TimeZoneDataVersion>2020d</TimeZoneDataVersion>
     <InputFolder>$(MSBuildProjectDirectory)/input</InputFolder>
     <OutputFolder>$(MSBuildProjectDirectory)/data</OutputFolder>
     <UpdateCondition>false</UpdateCondition>

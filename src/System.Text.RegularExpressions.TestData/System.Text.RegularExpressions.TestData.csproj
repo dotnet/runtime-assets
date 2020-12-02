@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.Build.NoTargets">
   <!-- 50MB unpacked: let's leave it out until we need it -->
   <ItemGroup>
     <Content Remove="regexredux\5_000_000.in" />

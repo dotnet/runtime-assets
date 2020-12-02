@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.Build.NoTargets">
   <PropertyGroup>
     <TimeZoneDataVersion>2020d</TimeZoneDataVersion>
-    <InputFolder>$(MSBuildProjectDirectory)/input</InputFolder>
-    <OutputFolder>$(MSBuildProjectDirectory)/data</OutputFolder>
+    <TimeZoneDataIntermediateDir>$([MSBuild]::NormalizeDirectory('$(IntermediateOutputPath)', 'timezonedata'))</TimeZoneDataIntermediateDir>
+    <TimeZoneDataSrcDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'data'))</TimeZoneDataSrcDir>
   </PropertyGroup>
+
   <ItemGroup>
     <Area Include="africa" />
     <Area Include="antarctica" />
@@ -15,35 +16,33 @@
     <Area Include="southamerica" />
     <Area Include="backward" />
   </ItemGroup>
+
   <Target Name="CheckVersion">
-    <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb/version"
-      DestinationFolder="$(InputFolder)">
-      <Output TaskParameter="DownloadedFile"
-      ItemName="VersionFile"/>
+    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version"
+                  DestinationFolder="$(TimeZoneDataIntermediateDir)">
+      <Output TaskParameter="DownloadedFile" ItemName="VersionFile" />
     </DownloadFile>
-    <ReadLinesFromFile
-      File="@(VersionFile)">
-      <Output
-        TaskParameter="Lines"
-        ItemName="VersionLines"/>
+    <ReadLinesFromFile File="@(VersionFile)">
+      <Output TaskParameter="Lines" ItemName="VersionLines" />
     </ReadLinesFromFile>
+
+    <ItemGroup>
+      <FileWrites Include="@(VersionFile)" />
+    </ItemGroup>
+
     <Warning Text="TimeZoneDataVerson does not match https://data.iana.org/time-zones/tzdb/version" Condition="'@(VersionLines)' != '$(TimeZoneDataVersion)'" />
   </Target>
+
   <Target Name="UpdateData">
-    <RemoveDir Directories="$(OutputFolder)" />
-    <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
-      DestinationFolder="$(InputFolder)">
-    </DownloadFile>
-    <DownloadFile
-      SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
-      DestinationFolder="$(OutputFolder)"
-      DestinationFileName="zone.tab">
-    </DownloadFile>
+    <RemoveDir Directories="$(TimeZoneDataSrcDir)" />
+    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
+                  DestinationFolder="$(TimeZoneDataIntermediateDir)" />
+    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
+                  DestinationFolder="$(TimeZoneDataSrcDir)"
+                  DestinationFileName="zone.tab" />
   </Target>
+
   <Target Name="CompileTimeZoneData" AfterTargets="UpdateData">
-    <Exec Command="zic -d $(OutputFolder) $(InputFolder)/%(Area.Identity)" />
-    <RemoveDir Directories="$(InputFolder)" />
+    <Exec Command="zic -d $(TimeZoneDataSrcDir) $(TimeZoneDataIntermediateDir)\%(Area.Identity)" />
   </Target>
 </Project>

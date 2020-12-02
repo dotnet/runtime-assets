@@ -1,29 +1,21 @@
 <Project>
-  <Import Project="Sdk.props" Sdk="Microsoft.DotNet.Arcade.Sdk" />  
+  <Import Project="Sdk.props" Sdk="Microsoft.DotNet.Arcade.Sdk" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <!-- No target framework is being compiled into the package. -->
-    <NoWarn>$(NoWarn);NU5128</NoWarn>
-    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <IsPackable>true</IsPackable>
     <ContentTargetFolders>contentFiles</ContentTargetFolders>
     <Authors>Microsoft</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <IsTestDataProject Condition="$(MSBuildProjectName.EndsWith('.TestData'))">true</IsTestDataProject>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <Copyright>$(CopyrightNetFoundation)</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <DebugType>embedded</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <LangVersion>Latest</LangVersion>
-
-    <!--
-      Tools and packages produced by this repository support infrastructure and are not shipping on NuGet or via any other official channel.
-    -->
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+    <IsTestDataProject Condition="$(MSBuildProjectName.EndsWith('.TestData'))">true</IsTestDataProject>
+    <!-- Packages produced are not shipping on NuGet or via any other official channel. -->
     <IsShipping>false</IsShipping>
   </PropertyGroup>
 
@@ -34,17 +26,11 @@
     <Description>This package provides test data that is used during the execution of the $(PackageFriendlyProjectName) tests.</Description>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <DebugType>None</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Include="**/*"
           Exclude="$(MSBuildProjectName)$(MSBuildProjectExtension)"
-          Pack="true"
           BuildAction="Content"
+          Pack="true"
           PackageCopyToOutput="true"
           PackagePath="contentFiles/any/any/"
           PackageFlatten="false" />

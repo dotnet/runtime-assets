@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.Build.NoTargets">
   <PropertyGroup>
     <TimeZoneDataVersion>2020d</TimeZoneDataVersion>
     <InputFolder>$(MSBuildProjectDirectory)/input</InputFolder>

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.Build.NoTargets">
   <PropertyGroup>
     <Title>Unicode data files for dotnet runtime consumption</Title>
     <PackageTags>Unicode UCD</PackageTags>

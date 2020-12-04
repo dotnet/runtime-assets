@@ -44,5 +44,6 @@
 
   <Target Name="CompileTimeZoneData" AfterTargets="UpdateData">
     <Exec Command="zic -d $(TimeZoneDataSrcDir) $(TimeZoneDataIntermediateDir)\%(Area.Identity)" />
+    <Exec Command="find . ! -name zone.tab -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
   </Target>
 </Project>

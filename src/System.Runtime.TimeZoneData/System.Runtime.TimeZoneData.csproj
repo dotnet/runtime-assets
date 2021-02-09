@@ -43,7 +43,10 @@
   </Target>
 
   <Target Name="CompileTimeZoneData" AfterTargets="UpdateData">
-    <Exec Command="zic -d $(TimeZoneDataSrcDir) $(TimeZoneDataIntermediateDir)\%(Area.Identity)" />
+    <Exec Command="date -v+10y '+%s'" ConsoleToMsBuild="true">
+          <Output TaskParameter="ConsoleOutput" PropertyName="TimeZoneTimeStamp" />
+    </Exec>
+    <Exec Command="zic -d $(TimeZoneDataSrcDir) -b slim -r @0/@$(TimeZoneTimeStamp) $(TimeZoneDataIntermediateDir)\%(Area.Identity)" />
     <Exec Command="find . ! -name zone.tab -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
   </Target>
 </Project>

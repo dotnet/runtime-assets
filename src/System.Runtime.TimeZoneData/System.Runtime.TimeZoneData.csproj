@@ -43,9 +43,6 @@
   </Target>
 
   <Target Name="CompileTimeZoneData" DependsOnTargets="UpdateData">
-    <Exec Command="date -v+10y '+%s'" ConsoleToMsBuild="true">
-          <Output TaskParameter="ConsoleOutput" PropertyName="TimeZoneTimeStamp" />
-    </Exec>
     <Exec Command="make zic" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
     <Exec Command="./zic -d $(TimeZoneDataSrcDir) -b slim %(Area.Identity)" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
     <Exec Command="find . ! -name zone.tab -maxdepth 1 -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>

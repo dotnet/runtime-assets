@@ -42,7 +42,7 @@
                   DestinationFileName="zone.tab" />
   </Target>
 
-  <Target Name="CompileTimeZoneData" AfterTargets="UpdateData">
+  <Target Name="CompileTimeZoneData" DependsOnTargets="UpdateData">
     <Exec Command="date -v+10y '+%s'" ConsoleToMsBuild="true">
           <Output TaskParameter="ConsoleOutput" PropertyName="TimeZoneTimeStamp" />
     </Exec>

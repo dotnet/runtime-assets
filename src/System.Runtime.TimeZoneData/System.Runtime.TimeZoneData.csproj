@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets">
   <PropertyGroup>
-    <TimeZoneDataVersion>2020d</TimeZoneDataVersion>
+    <TimeZoneDataVersion>2021a</TimeZoneDataVersion>
     <TimeZoneDataIntermediateDir>$([MSBuild]::NormalizeDirectory('$(IntermediateOutputPath)', 'timezonedata'))</TimeZoneDataIntermediateDir>
     <TimeZoneDataSrcDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'data'))</TimeZoneDataSrcDir>
   </PropertyGroup>
@@ -35,8 +35,8 @@
 
   <Target Name="UpdateData">
     <RemoveDir Directories="$(TimeZoneDataSrcDir)" />
-    <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/%(Area.Identity)"
-                  DestinationFolder="$(TimeZoneDataIntermediateDir)" />
+    <Exec Command="wget -r -nH --cut-dirs=2 --no-parent --reject='index.html*' -P $(TimeZoneDataIntermediateDir) https://data.iana.org/time-zones/tzdb-2021a/" />
+    <Exec Command="touch README" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
                   DestinationFolder="$(TimeZoneDataSrcDir)"
                   DestinationFileName="zone.tab" />
@@ -46,7 +46,8 @@
     <Exec Command="date -v+10y '+%s'" ConsoleToMsBuild="true">
           <Output TaskParameter="ConsoleOutput" PropertyName="TimeZoneTimeStamp" />
     </Exec>
-    <Exec Command="zic -d $(TimeZoneDataSrcDir) -b slim -r @0/@$(TimeZoneTimeStamp) $(TimeZoneDataIntermediateDir)\%(Area.Identity)" />
-    <Exec Command="find . ! -name zone.tab -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
+    <Exec Command="make zic" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
+    <Exec Command="./zic -d $(TimeZoneDataSrcDir) -b slim %(Area.Identity)" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
+    <Exec Command="find . ! -name zone.tab -maxdepth 1 -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
   </Target>
 </Project>

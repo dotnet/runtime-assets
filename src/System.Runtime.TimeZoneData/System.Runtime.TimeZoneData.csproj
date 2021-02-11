@@ -3,6 +3,7 @@
     <TimeZoneDataVersion>2021a</TimeZoneDataVersion>
     <TimeZoneDataIntermediateDir>$([MSBuild]::NormalizeDirectory('$(IntermediateOutputPath)', 'timezonedata'))</TimeZoneDataIntermediateDir>
     <TimeZoneDataSrcDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'data'))</TimeZoneDataSrcDir>
+    <ZicBloat>slim</ZicBloat>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,9 +43,12 @@
                   DestinationFileName="zone.tab" />
   </Target>
 
-  <Target Name="CompileTimeZoneData" DependsOnTargets="UpdateData">
+  <Target Name="CompileZic" AfterTargets="UpdateData">
     <Exec Command="make zic" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
-    <Exec Command="./zic -d $(TimeZoneDataSrcDir) -b slim %(Area.Identity)" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
+  </Target>
+
+  <Target Name="CompileTimeZoneData" AfterTargets="CompileZic">
+    <Exec Command="./zic -d $(TimeZoneDataSrcDir) -b $(ZicBloat) %(Area.Identity)" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
     <Exec Command="find . ! -name zone.tab -maxdepth 1 -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
   </Target>
 </Project>

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets">
-  <Import Project="Versions.props"/>
   <PropertyGroup>
+    <TimeZoneDataVersion>2021a</TimeZoneDataVersion>
     <TimeZoneDataIntermediateDir>$([MSBuild]::NormalizeDirectory('$(IntermediateOutputPath)', 'timezonedata'))</TimeZoneDataIntermediateDir>
     <TimeZoneDataSrcDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'data'))</TimeZoneDataSrcDir>
     <ZicBloat>slim</ZicBloat>
@@ -42,7 +42,7 @@
   </Target>
 
   <Target Name="CheckVersion" DependsOnTargets="GetLatestVersion">
-    <Warning Text="TimeZoneDataVersion does not match https://data.iana.org/time-zones/tzdb/version" Condition="'$(LatestTimeZoneDataVersion)' != '$(TimeZoneDataVersion)'" />
+    <Warning Text="TimeZoneDataVersion does not match https://data.iana.org/time-zones/tzdb/version" Condition="'$(TimeZoneDataVersion)' != '$(LatestTimeZoneDataVersion)'" />
   </Target>
 
   <Target Name="UpdateData">
@@ -63,8 +63,13 @@
     <Exec Command="find . ! -name zone.tab -maxdepth 1 -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
   </Target>
 
-  <Target Name="UpdateToLatestVersion" DependsOnTargets="SetLatestVersion">
-    <CallTarget Targets="CompileTimeZoneData"/>
-    <XmlPoke XmlInputPath="Versions.props" Value="$(LatestTimeZoneDataVersion)" Query="/Project/PropertyGroup/TimeZoneDataVersion" />
+  <Target Name="UpdateToLatestVersion" DependsOnTargets="SetLatestVersion;CompileTimeZoneData">
+    <PropertyGroup>
+      <_TZPropName>TimeZoneDataVersion</_TZPropName>
+    </PropertyGroup>
+    <WriteLinesToFile
+      File="$(MSBuildProjectFile)"
+      Lines="$([System.Text.RegularExpressions.Regex]::Replace($([System.IO.File]::ReadAllText('$(MSBuildProjectFile)')), '&lt;$(_TZPropName)&gt;[^$]*&lt;/$(_TZPropName)&gt;','&lt;$(_TZPropName)&gt;$(TimeZoneDataVersion)&lt;/$(_TZPropName)&gt;'))"
+      Overwrite="true"/>
   </Target>
 </Project>

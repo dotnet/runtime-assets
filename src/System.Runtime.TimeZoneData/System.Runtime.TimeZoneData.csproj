@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets">
+  <Import Project="Versions.props"/>
   <PropertyGroup>
-    <TimeZoneDataVersion>2021a</TimeZoneDataVersion>
     <TimeZoneDataIntermediateDir>$([MSBuild]::NormalizeDirectory('$(IntermediateOutputPath)', 'timezonedata'))</TimeZoneDataIntermediateDir>
     <TimeZoneDataSrcDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'data'))</TimeZoneDataSrcDir>
     <ZicBloat>slim</ZicBloat>
@@ -18,7 +18,13 @@
     <Area Include="backward" />
   </ItemGroup>
 
-  <Target Name="CheckVersion">
+  <Target Name="SetLatestVersion" DependsOnTargets="GetLatestVersion">
+    <PropertyGroup>
+      <TimeZoneDataVersion>$(LatestTimeZoneDataVersion)</TimeZoneDataVersion>
+    </PropertyGroup>
+  </Target>
+  
+  <Target Name="GetLatestVersion" BeforeTargets="PrepareForBuild">
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version"
                   DestinationFolder="$(TimeZoneDataIntermediateDir)">
       <Output TaskParameter="DownloadedFile" ItemName="VersionFile" />
@@ -30,8 +36,13 @@
     <ItemGroup>
       <FileWrites Include="@(VersionFile)" />
     </ItemGroup>
+    <PropertyGroup>
+      <LatestTimeZoneDataVersion>@(VersionLines)</LatestTimeZoneDataVersion>
+    </PropertyGroup>
+  </Target>
 
-    <Warning Text="TimeZoneDataVerson does not match https://data.iana.org/time-zones/tzdb/version" Condition="'@(VersionLines)' != '$(TimeZoneDataVersion)'" />
+  <Target Name="CheckVersion" DependsOnTargets="GetLatestVersion">
+    <Warning Text="TimeZoneDataVersion does not match https://data.iana.org/time-zones/tzdb/version" Condition="'$(LatestTimeZoneDataVersion)' != '$(TimeZoneDataVersion)'" />
   </Target>
 
   <Target Name="UpdateData">
@@ -43,12 +54,17 @@
                   DestinationFileName="zone.tab" />
   </Target>
 
-  <Target Name="CompileZic" AfterTargets="UpdateData">
+  <Target Name="CompileZic" DependsOnTargets="UpdateData">
     <Exec Command="make zic" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
   </Target>
 
-  <Target Name="CompileTimeZoneData" AfterTargets="CompileZic">
+  <Target Name="CompileTimeZoneData" DependsOnTargets="CompileZic">
     <Exec Command="./zic -d $(TimeZoneDataSrcDir) -b $(ZicBloat) %(Area.Identity)" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
     <Exec Command="find . ! -name zone.tab -maxdepth 1 -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
+  </Target>
+
+  <Target Name="UpdateToLatestVersion" DependsOnTargets="SetLatestVersion">
+    <CallTarget Targets="CompileTimeZoneData"/>
+    <XmlPoke XmlInputPath="Versions.props" Value="$(LatestTimeZoneDataVersion)" Query="/Project/PropertyGroup/TimeZoneDataVersion" />
   </Target>
 </Project>

@@ -36,7 +36,7 @@
 
   <Target Name="UpdateData">
     <RemoveDir Directories="$(TimeZoneDataSrcDir)" />
-    <Exec Command="wget -r -nH --cut-dirs=2 --no-parent --reject='index.html*' -P $(TimeZoneDataIntermediateDir) https://data.iana.org/time-zones/tzdb-2021a/" />
+    <Exec Command="wget -r -nH --cut-dirs=2 --no-parent --reject='index.html*' -P $(TimeZoneDataIntermediateDir) https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/" />
     <Exec Command="touch README" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/zone1970.tab"
                   DestinationFolder="$(TimeZoneDataSrcDir)"

@@ -21,7 +21,12 @@
   <Target Name="SetLatestVersion" DependsOnTargets="GetLatestVersion">
     <PropertyGroup>
       <TimeZoneDataVersion>$(LatestTimeZoneDataVersion)</TimeZoneDataVersion>
+      <_TZPropName>TimeZoneDataVersion</_TZPropName>
     </PropertyGroup>
+    <WriteLinesToFile
+      File="$(MSBuildProjectFile)"
+      Lines="$([System.Text.RegularExpressions.Regex]::Replace($([System.IO.File]::ReadAllText('$(MSBuildProjectFile)')), '&lt;$(_TZPropName)&gt;[^$]*&lt;/$(_TZPropName)&gt;','&lt;$(_TZPropName)&gt;$(TimeZoneDataVersion)&lt;/$(_TZPropName)&gt;'))"
+      Overwrite="true"/>
   </Target>
   
   <Target Name="GetLatestVersion" BeforeTargets="PrepareForBuild">
@@ -63,13 +68,5 @@
     <Exec Command="find . ! -name zone.tab -maxdepth 1 -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
   </Target>
 
-  <Target Name="UpdateToLatestVersion" DependsOnTargets="SetLatestVersion;CompileTimeZoneData">
-    <PropertyGroup>
-      <_TZPropName>TimeZoneDataVersion</_TZPropName>
-    </PropertyGroup>
-    <WriteLinesToFile
-      File="$(MSBuildProjectFile)"
-      Lines="$([System.Text.RegularExpressions.Regex]::Replace($([System.IO.File]::ReadAllText('$(MSBuildProjectFile)')), '&lt;$(_TZPropName)&gt;[^$]*&lt;/$(_TZPropName)&gt;','&lt;$(_TZPropName)&gt;$(TimeZoneDataVersion)&lt;/$(_TZPropName)&gt;'))"
-      Overwrite="true"/>
-  </Target>
+  <Target Name="UpdateToLatestVersion" DependsOnTargets="SetLatestVersion;CompileTimeZoneData"/>
 </Project>

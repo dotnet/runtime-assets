@@ -1,0 +1,24 @@
+name: Check TimeZone Version
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.102
+      - name: Build with dotnet
+        run: dotnet build src/System.Runtime.TimeZoneData /t:UpdateToLatestVersion
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3    
+        with: 
+          title: Update IANA Timezone version
+          branch: auto-update-tz-ver
+          delete-branch: true   

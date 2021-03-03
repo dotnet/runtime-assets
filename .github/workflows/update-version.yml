@@ -40,7 +40,7 @@ jobs:
               title: '🕑🕒🕓 Time zone update',
               body: 'IANA has updated tzdb'
             });
-            github.pulls.requestReviewers({
+            await github.pulls.requestReviewers({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: pull.data.number,

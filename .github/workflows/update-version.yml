@@ -3,6 +3,9 @@ name: Check TimeZone Version
 on:
   schedule:
     - cron: '0 0 * * 0'
+    branches: [ main ]
+
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,9 +15,13 @@ jobs:
       - name: Build with dotnet
         run: ./dotnet.sh build src/System.Runtime.TimeZoneData /t:UpdateToLatestVersion
       - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v3    
-        with: 
-          title: Update IANA Timezone version
-          branch: auto-update-tz-ver
-          delete-branch: true   
+        id: pr
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+          git checkout -b update-from-IANA
+          git add src/System.Runtime.TimeZoneData
+          git commit -m "Automatic tzdb update from IANA"
+          git push --set-upstream origin update-from-IANA
+          gh pr create -t "TimeZone update from IANA" -b "Update the TimeZone database from IANA"

@@ -46,10 +46,6 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="CheckVersion" DependsOnTargets="GetLatestVersion">
-    <Warning Text="TimeZoneDataVersion does not match https://data.iana.org/time-zones/tzdb/version" Condition="'$(TimeZoneDataVersion)' != '$(LatestTimeZoneDataVersion)'" />
-  </Target>
-
   <Target Name="UpdateData">
     <RemoveDir Directories="$(TimeZoneDataSrcDir)" />
     <Exec Command="wget -r -nH --cut-dirs=2 --no-parent --reject='index.html*' -P $(TimeZoneDataIntermediateDir) https://data.iana.org/time-zones/tzdb-$(TimeZoneDataVersion)/" />

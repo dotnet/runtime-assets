@@ -3,14 +3,12 @@ name: Update TimeZone Database
 on:
   schedule:
     - cron: '0 0 * * 0'
-    branches: [ main ]
 
   workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    if: github.event_name != 'schedule' || github.repository_owner == 'dotnet'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -34,7 +32,7 @@ jobs:
         with:
           script: |
             const pull = await github.pulls.create({
-              base: "main",
+              base: contex.ref,
               head: "update-from-IANA",
               owner: context.repo.owner,
               repo: context.repo.repo,

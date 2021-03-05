@@ -18,7 +18,18 @@
     <Area Include="backward" />
   </ItemGroup>
 
-  <Target Name="CheckVersion">
+  <Target Name="SetLatestVersion" DependsOnTargets="GetLatestVersion">
+    <PropertyGroup>
+      <TimeZoneDataVersion>$(LatestTimeZoneDataVersion)</TimeZoneDataVersion>
+      <_TZPropName>TimeZoneDataVersion</_TZPropName>
+    </PropertyGroup>
+    <WriteLinesToFile
+      File="$(MSBuildProjectFile)"
+      Lines="$([System.Text.RegularExpressions.Regex]::Replace($([System.IO.File]::ReadAllText('$(MSBuildProjectFile)')), '&lt;$(_TZPropName)&gt;[^$]*&lt;/$(_TZPropName)&gt;','&lt;$(_TZPropName)&gt;$(TimeZoneDataVersion)&lt;/$(_TZPropName)&gt;'))"
+      Overwrite="true"/>
+  </Target>
+  
+  <Target Name="GetLatestVersion" BeforeTargets="PrepareForBuild">
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version"
                   DestinationFolder="$(TimeZoneDataIntermediateDir)">
       <Output TaskParameter="DownloadedFile" ItemName="VersionFile" />
@@ -30,8 +41,9 @@
     <ItemGroup>
       <FileWrites Include="@(VersionFile)" />
     </ItemGroup>
-
-    <Warning Text="TimeZoneDataVerson does not match https://data.iana.org/time-zones/tzdb/version" Condition="'@(VersionLines)' != '$(TimeZoneDataVersion)'" />
+    <PropertyGroup>
+      <LatestTimeZoneDataVersion>@(VersionLines)</LatestTimeZoneDataVersion>
+    </PropertyGroup>
   </Target>
 
   <Target Name="UpdateData">
@@ -43,12 +55,14 @@
                   DestinationFileName="zone.tab" />
   </Target>
 
-  <Target Name="CompileZic" AfterTargets="UpdateData">
+  <Target Name="CompileZic" DependsOnTargets="UpdateData">
     <Exec Command="make zic" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
   </Target>
 
-  <Target Name="CompileTimeZoneData" AfterTargets="CompileZic">
+  <Target Name="CompileTimeZoneData" DependsOnTargets="CompileZic">
     <Exec Command="./zic -d $(TimeZoneDataSrcDir) -b $(ZicBloat) %(Area.Identity)" WorkingDirectory="$(TimeZoneDataIntermediateDir)"/>
     <Exec Command="find . ! -name zone.tab -maxdepth 1 -type f -exec rm -f {} +" WorkingDirectory="$(TimeZoneDataSrcDir)"/>
   </Target>
+
+  <Target Name="UpdateToLatestVersion" DependsOnTargets="SetLatestVersion;CompileTimeZoneData"/>
 </Project>

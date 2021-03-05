@@ -1,0 +1,48 @@
+name: Update TimeZone Database
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Branch
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git checkout -b update-from-IANA
+
+      - name: Run UpdateToLatestVersion
+        run: ./dotnet.sh build src/System.Runtime.TimeZoneData /t:UpdateToLatestVersion
+
+      - name: Commit Update
+        run: |
+          git add src/System.Runtime.TimeZoneData
+          git commit -m "Automated update of IANA timezone data"
+          git push --set-upstream origin update-from-IANA
+
+      - name: Create PR
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const pull = await github.pulls.create({
+              base: contex.ref,
+              head: "update-from-IANA",
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🕑🕒🕓 Time zone update',
+              body: 'IANA has updated tzdb'
+            });
+            await github.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pull.data.number,
+              reviewers: ["lewing", "tqiu8"]
+            });
+            return pull.data.number;

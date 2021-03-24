@@ -1,9 +1,26 @@
 {
- "tool": "Credential Scanner",
- "suppressions": [
-  {
-    "file": [ "DummyTcpServer.pfx", "testclienteku.contoso.com.pfx", "testnoeku.contoso.com.pfx", "testselfsignedclienteku.contoso.com.pfx", "testselfsignedservereku.contoso.com.pfx", "testservereku.contoso.com.pfx", "DummyTcpServer.pfx", "My.pfx", "test.pfx", "contoso.com.pfx", "testclient1_at_contoso.com.pfx" ],
-    "_justification": "Testdata certs"
-  }
- ]
+  "tool": "Credential Scanner",
+  "suppressions": [
+    {
+      "file": [
+        "contoso.com.pfx",
+        "DummyTcpServer.pfx",
+        "DummyTcpServer.pfx",
+        "My.noRC2.pfx",
+        "My.pfx",
+        "test.noRC2.pfx",
+        "test.pfx",
+        "testclient1_at_contoso.com.pfx",
+        "testclienteku.contoso.com.noRC2.pfx",
+        "testclienteku.contoso.com.pfx",
+        "testnoeku.contoso.com.noRC2.pfx",
+        "testnoeku.contoso.com.pfx",
+        "testselfsignedclienteku.contoso.com.pfx",
+        "testselfsignedservereku.contoso.com.pfx",
+        "testservereku.contoso.com.noRC2.pfx",
+        "testservereku.contoso.com.pfx"
+      ],
+      "_justification": "Testdata certs"
+    }
+  ]
 }

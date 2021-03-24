@@ -20,7 +20,7 @@
         "testservereku.contoso.com.noRC2.pfx",
         "testservereku.contoso.com.pfx"
       ],
-      "_justification": "Testdata certs"
+      "_justification": "Approved exemptions"
     }
   ]
 }

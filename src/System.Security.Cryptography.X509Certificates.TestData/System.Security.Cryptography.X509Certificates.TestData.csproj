@@ -1,5 +1,1 @@
-<Project Sdk="Microsoft.Build.NoTargets">
-  <PropertyGroup>
-    <NoWarn>NU5100</NoWarn>
-  </PropertyGroup>
-</Project>
+<Project Sdk="Microsoft.Build.NoTargets" />

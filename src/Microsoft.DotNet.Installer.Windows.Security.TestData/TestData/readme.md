@@ -9,3 +9,6 @@ construct SignedCms objects and extract nested signatures.
 This file is dual signed with the .NET Foundation and Microsoft 3rd Party Application SHA2 certificates. It's used to
 test some of the CLI installer logic to verify trusted origanizations.
 
+## Tampered.msi
+
+Signed MSI from .NET Runtime, edited in Orca to change the ProductName in the Properties table and should invalidated the signature.

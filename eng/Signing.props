@@ -6,5 +6,9 @@
     <FileExtensionSignInfo Include=".otf" CertificateName="None" />
     <FileExtensionSignInfo Include=".ttf" CertificateName="None" />
     <FileExtensionSignInfo Include=".msu" CertificateName="None" />
+    <!-- Ignore these files. These are signed or have tampered signatures for specific test cases and should NOT be signed again. -->
+    <ItemsToSign Remove="triple_signed.dll" />
+    <ItemsToSign Remove="dual_signed.dll" />
+    <ItemsToSign Remove="tampered.msi" />
   </ItemGroup>
 </Project>

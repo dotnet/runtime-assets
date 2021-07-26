@@ -11,4 +11,4 @@ test some of the CLI installer logic to verify trusted origanizations.
 
 ## tampered.msi
 
-Signed MSI from .NET Runtime, edited in Orca to change the ProductName in the Properties table and should invalidated the signature.
+Signed MSI from .NET Runtime, edited in Orca to change the ProductName in the Properties table which should have invalidated the signature.

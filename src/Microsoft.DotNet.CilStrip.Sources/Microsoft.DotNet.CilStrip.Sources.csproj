@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.Build.NoTargets">
+  <PropertyGroup>
+    <Title>Temporary Mono.Cecil sources for the Microsoft.DotNet.CilStrip msbuild task.</Title>
+    <PackageTags></PackageTags>
+    <Description>
+        This is a temporary copy of the Mono.Cecil sources from https://github.com/mono/mono/tree/d8f30c5f9aac8f1cb1e461bcd9c8a278f408c5e8/mcs/tools/cil-strip used to implement the Microsoft.DotNet.CilStrip msbuild task.
+        These are used until the reimplementation on top of System.Reflection.Metadata can be completed.
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="src/**/*"
+          BuildAction="Compile"
+          Pack="true"
+          PackageCopyToOutput="false"
+          PackagePath="contentFiles/cs/netstandard2.0"
+          PackageFlatten="false" />
+  </ItemGroup>
+</Project>

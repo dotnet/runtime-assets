@@ -28,7 +28,7 @@
 
 using System.Text;
 
-namespace Mono.Cecil.Binary {
+namespace CilStrip.Mono.Cecil.Binary {
 
 	using System.Collections;
 

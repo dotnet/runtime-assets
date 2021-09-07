@@ -30,7 +30,7 @@
 using System;
 using System.Collections;
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	class MetadataResolver {
 

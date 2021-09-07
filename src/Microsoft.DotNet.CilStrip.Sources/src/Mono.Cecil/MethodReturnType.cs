@@ -28,9 +28,9 @@
 
 using System;
 
-using Mono.Cecil.Metadata;
+using CilStrip.Mono.Cecil.Metadata;
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	internal sealed class MethodReturnType : ICustomAttributeProvider, IHasMarshalSpec, IHasConstant {
 

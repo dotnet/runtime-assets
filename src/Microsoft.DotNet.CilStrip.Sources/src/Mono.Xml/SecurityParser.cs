@@ -1,5 +1,5 @@
 //
-// Mono.Xml.SecurityParser.cs class implementation
+// CilStrip.Mono.Xml.SecurityParser.cs class implementation
 //
 // Author:
 //	Sebastien Pouliot (spouliot@motus.com)
@@ -35,7 +35,7 @@ using System.Collections;
 using System.IO;
 using System.Security;
 
-namespace Mono.Xml {
+namespace CilStrip.Mono.Xml {
 
 	// convert an XML document into SecurityElement objects
 	internal sealed class SecurityParser : SmallXmlParser, SmallXmlParser.IContentHandler {

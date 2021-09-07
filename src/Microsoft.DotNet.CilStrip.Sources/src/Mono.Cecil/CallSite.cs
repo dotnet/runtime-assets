@@ -26,12 +26,12 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System.Collections;
 	using System.Text;
 
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal sealed class CallSite : IMethodSignature, IAnnotationProvider, IMetadataTokenProvider {
 

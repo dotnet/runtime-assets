@@ -26,12 +26,12 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Binary {
+namespace CilStrip.Mono.Cecil.Binary {
 
 	using System;
 	using System.IO;
 
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal sealed class Image : IBinaryVisitable {
 

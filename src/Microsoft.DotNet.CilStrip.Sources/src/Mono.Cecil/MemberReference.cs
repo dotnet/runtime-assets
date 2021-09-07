@@ -26,11 +26,11 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System.Collections;
 
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal abstract class MemberReference : IMemberReference {
 

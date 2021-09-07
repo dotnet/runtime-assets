@@ -28,7 +28,7 @@
 
 using System;
 
-namespace Mono.Cecil.Binary {
+namespace CilStrip.Mono.Cecil.Binary {
 
 	[Flags]
 	internal enum RuntimeImage : uint {

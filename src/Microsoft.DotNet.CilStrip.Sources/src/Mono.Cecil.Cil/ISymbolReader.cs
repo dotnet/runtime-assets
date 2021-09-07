@@ -29,7 +29,7 @@
 using System;
 using System.Collections;
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
 	internal interface ISymbolReader : IDisposable {
 

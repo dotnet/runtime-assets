@@ -26,10 +26,10 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
-	using Mono.Cecil;
-	using Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil;
+	using CilStrip.Mono.Cecil.Binary;
 
 	internal sealed class FieldDefinition : FieldReference, IMemberDefinition,
 		ICustomAttributeProvider, IHasMarshalSpec, IHasConstant {

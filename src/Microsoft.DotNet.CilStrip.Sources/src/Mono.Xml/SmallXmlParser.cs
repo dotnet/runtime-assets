@@ -36,7 +36,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace Mono.Xml
+namespace CilStrip.Mono.Xml
 {
 	internal sealed class DefaultHandler : SmallXmlParser.IContentHandler
 	{

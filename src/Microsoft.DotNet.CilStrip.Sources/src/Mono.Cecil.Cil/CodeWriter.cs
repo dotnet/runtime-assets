@@ -26,15 +26,15 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
 	using System;
 	using System.Collections;
 
-	using Mono.Cecil;
-	using Mono.Cecil.Binary;
-	using Mono.Cecil.Metadata;
-	using Mono.Cecil.Signatures;
+	using CilStrip.Mono.Cecil;
+	using CilStrip.Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Signatures;
 
 	sealed class CodeWriter : BaseCodeVisitor {
 

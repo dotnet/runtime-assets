@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System;
 	using System.Collections;
@@ -34,7 +34,7 @@ namespace Mono.Cecil {
 	using System.Security.Cryptography;
 	using System.Text;
 
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal class AssemblyNameReference : IMetadataScope, IAnnotationProvider, IReflectionStructureVisitable {
 

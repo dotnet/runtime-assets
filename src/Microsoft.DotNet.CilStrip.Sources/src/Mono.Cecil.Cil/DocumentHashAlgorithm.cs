@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
 	internal enum DocumentHashAlgorithm {
 		[Guid (0x00000000, 0x0000, 0x0000, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)] None,

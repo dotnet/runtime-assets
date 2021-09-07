@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Metadata {
+namespace CilStrip.Mono.Cecil.Metadata {
 
 	internal interface IMetadataTable : IMetadataTableVisitable {
 		int Id { get; }

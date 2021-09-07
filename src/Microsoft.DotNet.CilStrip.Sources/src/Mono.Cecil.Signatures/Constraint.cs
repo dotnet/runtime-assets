@@ -26,9 +26,9 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Signatures {
+namespace CilStrip.Mono.Cecil.Signatures {
 
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal enum Constraint : byte {
 		None = 0x0,

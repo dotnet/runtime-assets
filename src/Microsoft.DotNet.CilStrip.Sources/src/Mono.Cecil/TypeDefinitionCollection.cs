@@ -29,15 +29,15 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System;
 	using System.Collections;
 	using System.Collections.Specialized;
 
-	using Mono.Cecil.Cil;
+	using CilStrip.Mono.Cecil.Cil;
 
-	using Hcp = Mono.Cecil.HashCodeProvider;
+	using Hcp = CilStrip.Mono.Cecil.HashCodeProvider;
 	using Cmp = System.Collections.Comparer;
 
 	internal sealed class TypeDefinitionCollection : NameObjectCollectionBase, IList, IReflectionVisitable  {

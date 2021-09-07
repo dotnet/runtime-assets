@@ -26,11 +26,11 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System.Text;
 
-	using Mono.Cecil.Signatures;
+	using CilStrip.Mono.Cecil.Signatures;
 
 	internal sealed class ArrayType : TypeSpecification {
 

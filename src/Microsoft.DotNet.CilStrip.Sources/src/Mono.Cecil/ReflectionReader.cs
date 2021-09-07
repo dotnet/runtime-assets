@@ -26,16 +26,16 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System;
 	using System.IO;
 	using System.Text;
 
-	using Mono.Cecil.Binary;
-	using Mono.Cecil.Cil;
-	using Mono.Cecil.Metadata;
-	using Mono.Cecil.Signatures;
+	using CilStrip.Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil.Cil;
+	using CilStrip.Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Signatures;
 
 	internal abstract class ReflectionReader : BaseReflectionReader {
 

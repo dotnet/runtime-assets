@@ -26,13 +26,13 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Metadata {
+namespace CilStrip.Mono.Cecil.Metadata {
 
 	using System;
 	using System.IO;
 	using System.Text;
 
-	using Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil.Binary;
 
 	sealed class MetadataReader : BaseMetadataVisitor {
 

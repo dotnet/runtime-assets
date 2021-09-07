@@ -29,13 +29,13 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Metadata {
+namespace CilStrip.Mono.Cecil.Metadata {
 
 	using System;
 	using System.Collections;
 	using System.IO;
 
-	using Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil.Binary;
 
 	sealed class MetadataRowReader : BaseMetadataRowVisitor {
 
@@ -92,12 +92,12 @@ namespace Mono.Cecil.Metadata {
 
 		public override void VisitAssemblyRow (AssemblyRow row)
 		{
-			row.HashAlgId = (Mono.Cecil.AssemblyHashAlgorithm) m_binaryReader.ReadUInt32 ();
+			row.HashAlgId = (CilStrip.Mono.Cecil.AssemblyHashAlgorithm) m_binaryReader.ReadUInt32 ();
 			row.MajorVersion = m_binaryReader.ReadUInt16 ();
 			row.MinorVersion = m_binaryReader.ReadUInt16 ();
 			row.BuildNumber = m_binaryReader.ReadUInt16 ();
 			row.RevisionNumber = m_binaryReader.ReadUInt16 ();
-			row.Flags = (Mono.Cecil.AssemblyFlags) m_binaryReader.ReadUInt32 ();
+			row.Flags = (CilStrip.Mono.Cecil.AssemblyFlags) m_binaryReader.ReadUInt32 ();
 			row.PublicKey = ReadByIndexSize (m_blobHeapIdxSz);
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Culture = ReadByIndexSize (m_stringsHeapIdxSz);
@@ -118,7 +118,7 @@ namespace Mono.Cecil.Metadata {
 			row.MinorVersion = m_binaryReader.ReadUInt16 ();
 			row.BuildNumber = m_binaryReader.ReadUInt16 ();
 			row.RevisionNumber = m_binaryReader.ReadUInt16 ();
-			row.Flags = (Mono.Cecil.AssemblyFlags) m_binaryReader.ReadUInt32 ();
+			row.Flags = (CilStrip.Mono.Cecil.AssemblyFlags) m_binaryReader.ReadUInt32 ();
 			row.PublicKeyOrToken = ReadByIndexSize (m_blobHeapIdxSz);
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Culture = ReadByIndexSize (m_stringsHeapIdxSz);
@@ -144,7 +144,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitConstantRow (ConstantRow row)
 		{
-			row.Type = (Mono.Cecil.Metadata.ElementType) m_binaryReader.ReadUInt16 ();
+			row.Type = (CilStrip.Mono.Cecil.Metadata.ElementType) m_binaryReader.ReadUInt16 ();
 			row.Parent = Utilities.GetMetadataToken (CodedIndex.HasConstant,
 				ReadByIndexSize (GetCodedIndexSize (CodedIndex.HasConstant)));
 			row.Value = ReadByIndexSize (m_blobHeapIdxSz);
@@ -159,14 +159,14 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitDeclSecurityRow (DeclSecurityRow row)
 		{
-			row.Action = (Mono.Cecil.SecurityAction) m_binaryReader.ReadInt16 ();
+			row.Action = (CilStrip.Mono.Cecil.SecurityAction) m_binaryReader.ReadInt16 ();
 			row.Parent = Utilities.GetMetadataToken (CodedIndex.HasDeclSecurity,
 				ReadByIndexSize (GetCodedIndexSize (CodedIndex.HasDeclSecurity)));
 			row.PermissionSet = ReadByIndexSize (m_blobHeapIdxSz);
 		}
 		public override void VisitEventRow (EventRow row)
 		{
-			row.EventFlags = (Mono.Cecil.EventAttributes) m_binaryReader.ReadUInt16 ();
+			row.EventFlags = (CilStrip.Mono.Cecil.EventAttributes) m_binaryReader.ReadUInt16 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.EventType = Utilities.GetMetadataToken (CodedIndex.TypeDefOrRef,
 				ReadByIndexSize (GetCodedIndexSize (CodedIndex.TypeDefOrRef)));
@@ -182,7 +182,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitExportedTypeRow (ExportedTypeRow row)
 		{
-			row.Flags = (Mono.Cecil.TypeAttributes) m_binaryReader.ReadUInt32 ();
+			row.Flags = (CilStrip.Mono.Cecil.TypeAttributes) m_binaryReader.ReadUInt32 ();
 			row.TypeDefId = m_binaryReader.ReadUInt32 ();
 			row.TypeName = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.TypeNamespace = ReadByIndexSize (m_stringsHeapIdxSz);
@@ -191,7 +191,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitFieldRow (FieldRow row)
 		{
-			row.Flags = (Mono.Cecil.FieldAttributes) m_binaryReader.ReadUInt16 ();
+			row.Flags = (CilStrip.Mono.Cecil.FieldAttributes) m_binaryReader.ReadUInt16 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Signature = ReadByIndexSize (m_blobHeapIdxSz);
 		}
@@ -217,14 +217,14 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitFileRow (FileRow row)
 		{
-			row.Flags = (Mono.Cecil.FileAttributes) m_binaryReader.ReadUInt32 ();
+			row.Flags = (CilStrip.Mono.Cecil.FileAttributes) m_binaryReader.ReadUInt32 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.HashValue = ReadByIndexSize (m_blobHeapIdxSz);
 		}
 		public override void VisitGenericParamRow (GenericParamRow row)
 		{
 			row.Number = m_binaryReader.ReadUInt16 ();
-			row.Flags = (Mono.Cecil.GenericParameterAttributes) m_binaryReader.ReadUInt16 ();
+			row.Flags = (CilStrip.Mono.Cecil.GenericParameterAttributes) m_binaryReader.ReadUInt16 ();
 			row.Owner = Utilities.GetMetadataToken (CodedIndex.TypeOrMethodDef,
 				ReadByIndexSize (GetCodedIndexSize (CodedIndex.TypeOrMethodDef)));
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
@@ -237,7 +237,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitImplMapRow (ImplMapRow row)
 		{
-			row.MappingFlags = (Mono.Cecil.PInvokeAttributes) m_binaryReader.ReadUInt16 ();
+			row.MappingFlags = (CilStrip.Mono.Cecil.PInvokeAttributes) m_binaryReader.ReadUInt16 ();
 			row.MemberForwarded = Utilities.GetMetadataToken (CodedIndex.MemberForwarded,
 				ReadByIndexSize (GetCodedIndexSize (CodedIndex.MemberForwarded)));
 			row.ImportName = ReadByIndexSize (m_stringsHeapIdxSz);
@@ -252,7 +252,7 @@ namespace Mono.Cecil.Metadata {
 		public override void VisitManifestResourceRow (ManifestResourceRow row)
 		{
 			row.Offset = m_binaryReader.ReadUInt32 ();
-			row.Flags = (Mono.Cecil.ManifestResourceAttributes) m_binaryReader.ReadUInt32 ();
+			row.Flags = (CilStrip.Mono.Cecil.ManifestResourceAttributes) m_binaryReader.ReadUInt32 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Implementation = Utilities.GetMetadataToken (CodedIndex.Implementation,
 				ReadByIndexSize (GetCodedIndexSize (CodedIndex.Implementation)));
@@ -267,8 +267,8 @@ namespace Mono.Cecil.Metadata {
 		public override void VisitMethodRow (MethodRow row)
 		{
 			row.RVA = new RVA (m_binaryReader.ReadUInt32 ());
-			row.ImplFlags = (Mono.Cecil.MethodImplAttributes) m_binaryReader.ReadUInt16 ();
-			row.Flags = (Mono.Cecil.MethodAttributes) m_binaryReader.ReadUInt16 ();
+			row.ImplFlags = (CilStrip.Mono.Cecil.MethodImplAttributes) m_binaryReader.ReadUInt16 ();
+			row.Flags = (CilStrip.Mono.Cecil.MethodAttributes) m_binaryReader.ReadUInt16 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Signature = ReadByIndexSize (m_blobHeapIdxSz);
 			row.ParamList = ReadByIndexSize (GetIndexSize (ParamTable.RId));
@@ -287,7 +287,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitMethodSemanticsRow (MethodSemanticsRow row)
 		{
-			row.Semantics = (Mono.Cecil.MethodSemanticsAttributes) m_binaryReader.ReadUInt16 ();
+			row.Semantics = (CilStrip.Mono.Cecil.MethodSemanticsAttributes) m_binaryReader.ReadUInt16 ();
 			row.Method = ReadByIndexSize (GetIndexSize (MethodTable.RId));
 			row.Association = Utilities.GetMetadataToken (CodedIndex.HasSemantics,
 				ReadByIndexSize (GetCodedIndexSize (CodedIndex.HasSemantics)));
@@ -317,7 +317,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitParamRow (ParamRow row)
 		{
-			row.Flags = (Mono.Cecil.ParameterAttributes) m_binaryReader.ReadUInt16 ();
+			row.Flags = (CilStrip.Mono.Cecil.ParameterAttributes) m_binaryReader.ReadUInt16 ();
 			row.Sequence = m_binaryReader.ReadUInt16 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 		}
@@ -327,7 +327,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitPropertyRow (PropertyRow row)
 		{
-			row.Flags = (Mono.Cecil.PropertyAttributes) m_binaryReader.ReadUInt16 ();
+			row.Flags = (CilStrip.Mono.Cecil.PropertyAttributes) m_binaryReader.ReadUInt16 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Type = ReadByIndexSize (m_blobHeapIdxSz);
 		}
@@ -346,7 +346,7 @@ namespace Mono.Cecil.Metadata {
 		}
 		public override void VisitTypeDefRow (TypeDefRow row)
 		{
-			row.Flags = (Mono.Cecil.TypeAttributes) m_binaryReader.ReadUInt32 ();
+			row.Flags = (CilStrip.Mono.Cecil.TypeAttributes) m_binaryReader.ReadUInt32 ();
 			row.Name = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Namespace = ReadByIndexSize (m_stringsHeapIdxSz);
 			row.Extends = Utilities.GetMetadataToken (CodedIndex.TypeDefOrRef,

@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Metadata {
+namespace CilStrip.Mono.Cecil.Metadata {
 
 	internal enum TokenType : uint {
 		Module			  = 0x00000000,

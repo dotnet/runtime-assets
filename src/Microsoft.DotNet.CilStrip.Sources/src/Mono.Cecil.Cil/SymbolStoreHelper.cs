@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
 	using System;
 	using SR = System.Reflection;
@@ -78,7 +78,7 @@ namespace Mono.Cecil.Cil {
 		static string GetSymbolSupportType (out string assembly)
 		{
 			string kind = GetSymbolKind ();
-			assembly = "Mono.Cecil." + kind;
+			assembly = "CilStrip.Mono.Cecil." + kind;
 			return string.Format (assembly + "." + kind + "Factory");
 		}
 

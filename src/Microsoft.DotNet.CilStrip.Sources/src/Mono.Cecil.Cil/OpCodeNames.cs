@@ -24,7 +24,7 @@
 // copy-pasted from /mcs/class/corlib/System.Reflection.Emit/OpCodeNames.cs
 // added names for "no." and "readonly."
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
 	internal sealed class OpCodeNames {
 

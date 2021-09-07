@@ -26,9 +26,9 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
-	using Mono.Cecil;
+	using CilStrip.Mono.Cecil;
 
 	internal sealed class MethodBody : IVariableDefinitionProvider, IScopeProvider, ICodeVisitable {
 

@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System;
 	using System.IO;
@@ -35,9 +35,9 @@ namespace Mono.Cecil {
 	using SSP = System.Security.Permissions;
 	using System.Text;
 
-	using Mono.Cecil.Metadata;
-	using Mono.Cecil.Signatures;
-	using Mono.Xml;
+	using CilStrip.Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Signatures;
+	using CilStrip.Mono.Xml;
 
 	internal sealed class SecurityDeclarationReader {
 

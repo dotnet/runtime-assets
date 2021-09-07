@@ -26,9 +26,9 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
-	using Mono.Cecil;
+	using CilStrip.Mono.Cecil;
 
 	internal class FieldReference : MemberReference {
 

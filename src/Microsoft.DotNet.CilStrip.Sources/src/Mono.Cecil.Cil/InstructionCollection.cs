@@ -29,12 +29,12 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
 	using System;
 	using System.Collections;
 
-	using Mono.Cecil.Cil;
+	using CilStrip.Mono.Cecil.Cil;
 
 	internal sealed class InstructionCollection : CollectionBase, ICodeVisitable {
 

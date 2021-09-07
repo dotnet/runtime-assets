@@ -63,7 +63,7 @@ stages:
       - ${{ if eq(variables._RunAsPublic, True) }}:
         - job: Linux
           pool:
-            vimage: 'ubuntu-latest'
+            vmimage: 'ubuntu-latest'
           strategy:
             matrix:
               Build_Debug:

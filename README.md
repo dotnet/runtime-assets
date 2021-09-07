@@ -3,7 +3,7 @@
 This repository contains assets that are binary files or too large to be checked in directly. Packages are uploaded to the default transport channel's feed.
 
 ## Workflow
-1. Submit a PR with the new assets.
+1. Submit a Pull Request with the new assets.
 2. After the PR is merged, an internal build publishes assets to the Build Assets Registry and an auto PR will be opened in the subscribing repositories.
 
 ## Example

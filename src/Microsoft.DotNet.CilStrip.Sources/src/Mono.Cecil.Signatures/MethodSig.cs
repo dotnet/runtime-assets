@@ -26,9 +26,9 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using Mono.Cecil;
+using CilStrip.Mono.Cecil;
 
-namespace Mono.Cecil.Signatures {
+namespace CilStrip.Mono.Cecil.Signatures {
 
 	internal abstract class MethodSig : Signature {
 

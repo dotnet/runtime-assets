@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Cil {
+namespace CilStrip.Mono.Cecil.Cil {
 
 	using System;
 	using SR = System.Reflection;

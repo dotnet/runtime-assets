@@ -26,14 +26,14 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Signatures {
+namespace CilStrip.Mono.Cecil.Signatures {
 
 	using System;
 	using System.Text;
 
-	using Mono.Cecil;
-	using Mono.Cecil.Binary;
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil;
+	using CilStrip.Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal sealed class SignatureWriter : BaseSignatureVisitor {
 

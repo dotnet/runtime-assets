@@ -27,10 +27,10 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Signatures {
+namespace CilStrip.Mono.Cecil.Signatures {
 
-	using Mono.Cecil;
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal sealed class GENERICINST : SigType {
 

@@ -26,9 +26,9 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil.Metadata {
+namespace CilStrip.Mono.Cecil.Metadata {
 
-	using Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil.Binary;
 
 	internal sealed class MetadataRoot : IMetadataVisitable {
 

@@ -26,13 +26,13 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Cecil {
+namespace CilStrip.Mono.Cecil {
 
 	using System;
 	using System.IO;
 
-	using Mono.Cecil.Binary;
-	using Mono.Cecil.Metadata;
+	using CilStrip.Mono.Cecil.Binary;
+	using CilStrip.Mono.Cecil.Metadata;
 
 	internal sealed class StructureWriter : BaseStructureVisitor {
 
@@ -162,7 +162,7 @@ namespace Mono.Cecil {
 		{
 			FileTable fTable = m_tableWriter.GetFileTable ();
 			FileRow fRow = m_rowWriter.CreateFileRow (
-				Mono.Cecil.FileAttributes.ContainsNoMetaData,
+				CilStrip.Mono.Cecil.FileAttributes.ContainsNoMetaData,
 				m_mdWriter.AddString (res.File),
 				m_mdWriter.AddBlob (res.Hash));
 

@@ -34,7 +34,7 @@ namespace CilStrip.Mono.Cecil {
 		{
 		}
 
-		public const string Corlib = "mscorlib";
+		public const string Corlib = "System.Private.CoreLib";
 
 		public const string ModuleType = "<Module>";
 		public const string PrivateImplDetails = "<PrivateImplementationDetails>";

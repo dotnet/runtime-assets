@@ -42,8 +42,8 @@ stages:
           ${{ if eq(variables._RunAsPublic, True) }}:
             vmimage: 'windows-latest'
           ${{ if eq(variables._RunAsInternal, True) }}:
-            name: NetCoreInternal-Pool
-            queue: BuildPool.Windows.10.Amd64.VS2019
+            name: NetCore1ESPool-Internal
+            demands: ImageOverride -equals Build.Windows.10.Amd64.VS2019
         strategy:
           matrix:
             Build_Release:

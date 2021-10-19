@@ -24,7 +24,7 @@ jobs:
       - name: Commit Update
         run: |
           git add src/System.Runtime.TimeZoneData
-          git commit -m "Automated update of IANA timezone data"
+          git commit -m "Automated update of IANA time zone data"
           git push --set-upstream origin update-from-IANA
 
       - name: Create PR
@@ -32,17 +32,17 @@ jobs:
         with:
           script: |
             const pull = await github.pulls.create({
-              base: contex.ref,
+              base: context.ref,
               head: "update-from-IANA",
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: '🕑🕒🕓 Time zone update',
-              body: 'IANA has updated tzdb'
+              body: 'IANA has updated tzdb. See https://data.iana.org/time-zones'
             });
             await github.pulls.requestReviewers({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: pull.data.number,
-              reviewers: ["lewing", "tqiu8"]
+              reviewers: ["lewing", "steveisok"]
             });
             return pull.data.number;

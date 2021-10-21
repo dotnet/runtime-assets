@@ -4,7 +4,7 @@ This repository contains assets that are binary files or too large to be checked
 
 ## Workflow
 
-1. Test locally.
+1. (Optional) Test locally.
 2. Submit a PR with the new assets.
 3. After the PR is merged, an internal build publishes assets to the Build Assets Registry and an auto PR will be opened in the subscribing repositories.
 
@@ -12,7 +12,7 @@ This repository contains assets that are binary files or too large to be checked
 
 Let's assume we are adding a new unit test for the GZip feature from the `System.IO.Compression` namespace, and the test depends on a file called `example.gz`.
 
-### 1. Test locally.
+### 1. (Optional) Test locally.
 
 a) Save `example.gz` inside `runtime-assets\src\System.IO.Compression.TestData\GZipTestData`.
 
@@ -32,7 +32,7 @@ e)  Edit `Nuget.config` located in the root folder, and inside the `<packageSour
 
 f) Go to `runtime\src\libraries\System.IO.Compression\tests` and run `dotnet build` or `dotnet restore`. This will force consuming the new nupkg and will place it in your local `.nuget` cache (usually, it's `C:\Users\%USERNAME%\.nuget`).
 
-g) Navigate to your local `.nuget` folder, go to `.nuget\System.IO.Compression.TestData` and verify that the folder `7.0.0-dev` is there, and that `7.0.0-dev\contentFiles\any\any\GZipTestData\example.gz` is there.
+g) At the time of writing this guide, the .NET version tracked in the `main` branch of the `runtime` repo was 7.0. So for this example, assume the version number is `7.0.0`. Navigate to your local `.nuget` folder, go to `.nuget\System.IO.Compression.TestData` and verify that the folder `7.0.0-dev` is there, and that `7.0.0-dev\contentFiles\any\any\GZipTestData\example.gz` is there.
 
 h) Run your new unit test that depends on that file, it should be able to find the file.
 

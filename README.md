@@ -4,15 +4,28 @@ This repository contains assets that are binary files or too large to be checked
 
 ## Workflow
 
-1. (Optional) Test locally.
-2. Submit a PR with the new assets.
-3. After the PR is merged, an internal build publishes assets to the Build Assets Registry and an auto PR will be opened in the subscribing repositories.
+1. Submit a PR with the new assets.
+2. After the PR is merged, an internal build publishes assets to the Build Assets Registry and an auto PR will be opened in the subscribing repositories.
+
+- Optional step: Local testing.
 
 ## Example
 
 Let's assume we are adding a new unit test for the GZip feature from the `System.IO.Compression` namespace, and the test depends on a file called `example.gz`.
 
-### 1. (Optional) Test locally.
+### 1. Submit a PR to runtime-assets with the new files.
+
+### 2. Post-merge
+
+After the PR is merged an internal build will publish the packages to an internal feed and update the Build Assets Registry. Subscribers to this repository will receive an auto PR update with the updated package version.
+
+You can sync your `runtime` clone to the latest bits in `main` to consume the latest `runtime-assets` package, which means you can revert your `Nuget.config` temporary change.
+
+### Optional step: local testing
+
+Testing your assets in your local machine is an optional step you can perform before submitting your PR.
+Local testing is usually not necessary due to the nature of this repository, which mostly only deals with static files.
+Feel free to skip this section.
 
 a) Save `example.gz` inside `runtime-assets\src\System.IO.Compression.TestData\GZipTestData`.
 
@@ -37,11 +50,3 @@ g) At the time of writing this guide, the .NET version tracked in the `main` bra
 h) Run your new unit test that depends on that file, it should be able to find the file.
 
 i) If you need to update the package with additional files, make sure to delete the folder `.nuget\System.IO.Compression.TestData\7.0.0-dev\`, then repeat steps **b** through **h**.
-
-### 2. Submit a PR to runtime-assets with the new files.
-
-### 3. Post-merge
-
-After the PR is merged an internal build will publish the packages to an internal feed and update the Build Assets Registry. Subscribers to this repository will receive an auto PR update with the updated package version.
-
-You can sync your `runtime` clone to the latest bits in `main` to consume the latest `runtime-assets` package, which means you can revert your `Nuget.config` temporary change.

@@ -17,10 +17,7 @@ Let's assume we are adding a new unit test for the GZip feature from the `System
 
 ### 2. Post-merge
 
-After the PR is merged an internal build will publish the packages to an internal feed and update the Build Assets Registry. Subscribers to this repository will receive an auto PR update with the updated package version.
-
-You can sync your `runtime` clone to the latest bits in `main` to consume the latest `runtime-assets` package, which means you can revert your `Nuget.config` temporary change.
-
+After the PR is merged an internal build will publish the packages to a public feed and update the Build Assets Registry. Subscribers to this repository will receive an auto PR update with the updated package version.
 ### Optional step: local testing
 
 Testing your assets in your local machine is an optional step you can perform before submitting your PR.

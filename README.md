@@ -29,16 +29,16 @@ a) Save `example.gz` inside `runtime-assets\src\System.IO.Compression.TestData\G
 b) Run `build.cmd --pack` from the `runtime-assets\` root folder.
 
 c) Verify that your package was generated with the new test data.
+
   I.  Go to `runtime-assets\artifacts\packages\Debug\NonShipping`.
   II.  Temporarily rename `System.IO.Compression.TestData.7.0.0-dev.nupkg` to the extension `*.nupkg.zip`.
   III.  Open it with your preferred Zip app.
-  -  Navigate to `contentFiles\any\any\GZipTestData` and verify that the new `example.gz` file can be found there.
-  IV.  Close the Zip window, and revert the name to `*.nupkg`.
-  V.  Copy the `System.IO.Compression.TestData.7.0.0-dev.nupkg` to a temporary folder, for example, `D:\tmp\`.
+  IV.  Inside the zip, navigate to `contentFiles\any\any\GZipTestData` and verify that the new `example.gz` file can be found there.
+  V.  Close the Zip window, and revert the name to `*.nupkg`.
 
 d)  Go to your `runtime` folder.
 
-e)  Edit `Nuget.config` located in the root folder, and inside the `<packageSources>` section, add a new key that points to the temporary folder as a source: `<add key="tmp" value="D:\tmp" />`.
+e)  Edit `Nuget.config` located in the root folder, and inside the `<packageSources>` section, add a new key that points to the temporary folder as a source: `<add key="tmp" value="D:\runtime-assets\artifacts\packages\Debug\NonShipping" />` (make sure to adjust the root path to your repo folder).
 
 f) Go to `runtime\src\libraries\System.IO.Compression\tests` and run `dotnet build` or `dotnet restore`. This will force consuming the new nupkg and will place it in your local `.nuget` cache (usually, it's `C:\Users\%USERNAME%\.nuget`).
 

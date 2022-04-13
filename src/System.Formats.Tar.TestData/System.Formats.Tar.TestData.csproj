@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.Build.NoTargets">
+    <PropertyGroup>
+        <NoWarn>$(NoWarn);NU5123</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Update="README.md" Pack="False" />
+        <None Update="GenerateTarFiles.sh" Pack="False" />
+    </ItemGroup>
+</Project>

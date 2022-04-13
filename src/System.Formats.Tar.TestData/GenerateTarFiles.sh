@@ -465,7 +465,7 @@ function BeginGeneration()
 ### SCRIPT EXECUTION ###
 
 # IMPORTANT: Do not move the script to another location.
-# It assumes it's located inside 'TarTestdata', on the same level as 'unarchived'.
+# It assumes it's located inside the 'TarTestData' folder, and on the same level as the 'unarchived' folder.
 ScriptPath=$(readlink -f $0)
 DirsRoot=$(dirname $ScriptPath)
 

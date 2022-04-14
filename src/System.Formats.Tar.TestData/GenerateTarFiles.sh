@@ -22,6 +22,8 @@ BlockDevMinor=53
 # pax_gea is a special case for the pax format that includes global extended attributes
 FormatsArray=( "v7" "ustar" "pax" "pax_gea" "oldgnu" "gnu" )
 
+# .NET currently only offers Gzip compression of all the ones tar supports
+CompressionMethodsArray=( "tar" "targz" )
 
 GEAKey="globexthdr.MyGlobalExtendedAttribute"
 GEAValue="hello"
@@ -118,11 +120,8 @@ function ExecuteTar()
         GEAArgument="$GEAPAXOptions"
     fi
 
-    # IMPORTANT: This will ensure we archive entries that have relative paths to this folder
-    EchoInfo "cd $FullPathFolderToArchive"
-    cd $FullPathFolderToArchive
-
-    TarCommand="tar $Arguments $FileName * --format=$FormatArgument $GEAArgument"
+    # IMPORTANT: "-C" will ensure we archive entries that have relative paths to this folder
+    TarCommand="tar $Arguments $FileName -C $FullPathFolderToArchive $(ls $FullPathFolderToArchive) --format=$FormatArgument $GEAArgument"
     EchoInfo "$TarCommand"
 
     # Execute the command as the user that owns the files
@@ -150,7 +149,7 @@ function GenerateArchive()
     Extension=$4
 
     UnarchivedDir="$DirsRoot/unarchived"
-    FoldersToArchiveArray=($(ls $UnarchivedDir))
+    FoldersToArchiveArray=($(sudo ls $UnarchivedDir))
 
     for Format in "${FormatsArray[@]}"; do
 
@@ -158,6 +157,13 @@ function GenerateArchive()
         DeleteAndRecreateDir $OutputDir
 
         for FolderToArchive in "${FoldersToArchiveArray[@]}"; do
+
+            if [ $Format = "v7" ]; then
+                if [ $FolderToArchive = "longpath_over255" ] || [ $FolderToArchive = "longpath_splitable_under255" ] || [ $FolderToArchive = "longfilename_over100_under255" ] || [ $FolderToArchive = "specialfiles" ]; then
+                    EchoWarning "Skipping V7 unsupported folder: $FolderToArchive"
+                    continue
+                fi
+            fi
 
             FullPathFolderToArchive="$UnarchivedDir/$FolderToArchive/"
             FileName="$OutputDir/$FolderToArchive$Extension"
@@ -210,8 +216,6 @@ function Generate()
 {
     DirsRoot=$1
 
-    CompressionMethodsArray=( "tar" "targz" )
-
     for CompressionMethod in "${CompressionMethodsArray[@]}"; do
         GenerateCompressionMethodDir "$DirsRoot" "$CompressionMethod"
     done
@@ -261,11 +265,9 @@ function ChangeUnarchivedOwnership()
 {
     DirsRoot=$1
 
-    CurrentUser=$(id -u)
-    CurrentGroup=$(id -g)
     UnarchivedDir=$DirsRoot/unarchived
     UnarchivedDirContents=$UnarchivedDir/*
-    UnarchivedChildrenArray=($(ls $UnarchivedDir))
+    UnarchivedChildrenArray=($(sudo ls $UnarchivedDir))
 
     # First, we recursively change ownership of all files and folders
     EchoWarning "Changing ownership of contents of 'unarchived' folder to '$TarUser:$TarGroup'."
@@ -273,12 +275,10 @@ function ChangeUnarchivedOwnership()
     CheckLastErrorOrExit "Chown $TarUser:$TarGroup $UnarchivedDirContents"
 
     # Second, we revert the ownership of the parent folders (no recursion).
-    # This is so we can later 'cd' into them. This is a requirement for the 'tar' command
-    # so that it archives entries relative to that folder.
     for UnarchivedChildDir in "${UnarchivedChildrenArray[@]}"; do
         EchoWarning "Preserving ownership of child folder: $UnarchivedChildDir"
-        sudo chown $CurrentUser:$CurrentGroup $UnarchivedDir/$UnarchivedChildDir
-        CheckLastErrorOrExit "Chown $CurrentUser:$CurrentGroup $UnarchivedChildDir"
+        sudo chown $TarUserId:$TarGroupId $UnarchivedDir/$UnarchivedChildDir
+        CheckLastErrorOrExit "Chown $TarUserId:$TarGroupId $UnarchivedChildDir"
     done
 }
 
@@ -321,9 +321,6 @@ function CreateSpecialFiles()
     BlockDevice=$DevicesDir/blockdev
     FifoFile=$DevicesDir/fifofile
 
-    currentUser=$(id -u)
-    currentGroup=$(id -g)
-
     if [ -d $DevicesDir ]; then
         EchoSuccess "Devices folder exists. No action taken."
     else
@@ -338,8 +335,8 @@ function CreateSpecialFiles()
         EchoWarning "Character device does not exist. Creating it: $CharacterDevice"
         sudo mknod $CharacterDevice c $CharDevMajor $CharDevMinor
         CheckLastErrorOrExit "Creating character device $CharacterDevice"
-        sudo chown $currentUser:$currentGroup $CharacterDevice
-        CheckLastErrorOrExit "chown $currentUser:$currentGroup $CharacterDevice"
+        sudo chown $TarUserId:$TarGroupId $CharacterDevice
+        CheckLastErrorOrExit "chown $TarUserId:$TarGroupId $CharacterDevice"
     fi
 
     if [ -b $BlockDevice ]; then
@@ -348,8 +345,8 @@ function CreateSpecialFiles()
         EchoWarning "Block device does not exist. Creating it: $BlockDevice"
         sudo mknod $BlockDevice b $BlockDevMajor $BlockDevMinor
         CheckLastErrorOrExit "Creating block device $BlockDevice"
-        sudo chown $currentUser:$currentGroup $BlockDevice
-        CheckLastErrorOrExit "chown $currentUser:$currentGroup $BlockDevice"
+        sudo chown $TarUserId:$TarGroupId $BlockDevice
+        CheckLastErrorOrExit "chown $TarUserId:$TarGroupId $BlockDevice"
     fi
 
     if [ -p $FifoFile ]; then
@@ -358,8 +355,8 @@ function CreateSpecialFiles()
         EchoWarning "Fifo file does not exist. Creating it: $FifoFile"
         sudo mknod $FifoFile p
         CheckLastErrorOrExit "Creating fifo file $FifoFile"
-        sudo chown $currentUser:$currentGroup $FifoFile
-        CheckLastErrorOrExit "chown $currentUser:$currentGroup $FifoFile"
+        sudo chown $TarUserId:$TarGroupId $FifoFile
+        CheckLastErrorOrExit "chown $TarUserId:$TarGroupId $FifoFile"
     fi
 }
 
@@ -393,7 +390,7 @@ function CreateLongDirAndLongFile()
 
     if [ ! -f $LongFilePath ]; then
         EchoInfo "Restoring $TestName file that VS does not support"
-        sudo sh -c "echo \"Hello $TestName\" >> $LongFilePath"
+        sudo sh -c "echo \"Hello $TestName\" > $LongFilePath"
         CheckLastErrorOrExit "echo 'Hello $TestName' > $LongFilePath"
     fi
 }

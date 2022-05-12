@@ -7,6 +7,6 @@
     <FileExtensionSignInfo Include=".ttf" CertificateName="None" />
     <FileExtensionSignInfo Include=".msu" CertificateName="None" />
     <!-- Ignore these files. These are signed or have tampered signatures for specific test cases and should NOT be signed again. -->
-    <FileSignInfo Include="dual_signed.dll;triple_signed.dll;tampered.msi" CertificateName="None" />
+    <FileSignInfo Include="dotnet_realsigned.exe;dotnet_fakesigned.exe;dual_signed.dll;triple_signed.dll;tampered.msi" CertificateName="None" />
   </ItemGroup>
 </Project>

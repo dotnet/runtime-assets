@@ -1,4 +1,10 @@
 
+## dotnet_fakesigned.exe
+dotnet.exe signed using an X509 certificate with data that looks like it was signed by Microsoft, but has no timestamp or trusted root authority
+
+## dotnet_realsigned.exe
+dotnet.exe signed using the new .NET certificate.
+
 ## triple_signed.dll
 
 This file contains 3 Microsoft AuthentiCode signatures and is used to verify CryptQueryObject implementations to

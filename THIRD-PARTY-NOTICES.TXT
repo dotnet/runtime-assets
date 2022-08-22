@@ -89,7 +89,8 @@ License for ibm-fpgen (https://github.com/nigeltao/parse-number-fxx-test-data)
    See the License for the specific language governing permissions and
    limitations under the License.
 
-License for node-tar (https://github.com/npm/node-tar)
+License for node-tar (https://github.com/npm/node-tar) test files
+
 ------------------------------------------------------
 
 The ISC License

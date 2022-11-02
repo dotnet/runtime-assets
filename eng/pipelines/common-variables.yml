@@ -28,3 +28,9 @@ variables:
         /p:DotNetPublishUsingPipelines=true
         /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
         /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+    - name: Codeql.Enabled
+      value: True
+    - name: Codeql.BuildIdentifier
+      value: $(System.JobDisplayName)
+    - name: Codeql.TSAEnabled
+      value: True

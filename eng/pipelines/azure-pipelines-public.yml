@@ -1,0 +1,70 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - main
+    - release/*
+  paths:
+    exclude:
+    - docs/*
+    
+pr:
+  branches:
+    include:
+    - main
+    - release/*
+  paths:
+    exclude:
+    - docs/*
+    
+variables:
+- template: common-variables.yml
+
+stages:
+- stage: build
+  displayName: Build
+  jobs:
+  - template: /eng/common/templates/jobs/jobs.yml
+    parameters:
+      artifacts:
+        publish:
+          artifacts: true
+          logs: true
+          manifests: true
+      enableMicrobuild: true
+      enablePublishUsingPipelines: true
+      jobs:
+      - job: Windows_NT
+        timeoutInMinutes: 90
+        pool:
+          name: NetCore-Svc-Public
+          demands: ImageOverride -equals windows.vs2022.amd64.open
+        strategy:
+          matrix:
+            Build_Release:
+              _BuildConfig: Release
+            Build_Debug:
+              _BuildConfig: Debug
+        steps:
+        - script: eng\common\cibuild.cmd
+            -configuration $(_BuildConfig)
+            -prepareMachine
+          displayName: Windows Build / Publish
+      - job: Linux
+        pool:
+          name: NetCore-Svc-Public
+          demands: ImageOverride -equals build.ubuntu.2204.amd64.open
+        strategy:
+          matrix:
+            Build_Debug:
+              _BuildConfig: Debug
+            Build_Release:
+              _BuildConfig: Release
+        preSteps:
+        - checkout: self
+          clean: true
+        steps:
+        - script: eng/common/cibuild.sh
+            --configuration $(_BuildConfig)
+            --prepareMachine
+          displayName: Linux Build / Publish

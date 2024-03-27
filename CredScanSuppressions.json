@@ -1,9 +1,0 @@
-{
-    "tool": "Credential Scanner",
-    "suppressions": [
-        {
-            "file": "src\\System.IO.Compression.TestData\\UncompressedTestFiles\\WebFiles\\angular.js",
-            "_justification": "Third party source file contasining example secrests."
-        }
-    ]
-}

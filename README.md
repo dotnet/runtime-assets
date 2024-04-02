@@ -15,6 +15,9 @@ Let's assume we are adding a new unit test for the GZip feature from the `System
 
 ### 1. Submit a PR to runtime-assets with the new files.
 
+For any files that can't be reviewed in diff (ie., binary files) please include in the PR instructions for how to create them independently - ie., a program, or the inputs and the version of the tool used to create them.
+When reviewing a PR containing binary files, make a best effort to validate their content. [Here's an example]([url](https://github.com/dotnet/runtime-assets/pull/230)).
+
 ### 2. Post-merge
 
 After the PR is merged an internal build will publish the packages to a public feed and update the Build Assets Registry. Subscribers to this repository will receive an auto PR update with the updated package version.

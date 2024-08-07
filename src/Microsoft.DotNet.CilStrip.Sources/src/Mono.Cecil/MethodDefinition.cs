@@ -571,7 +571,7 @@ namespace CilStrip.Mono.Cecil {
 			// there is no body. This is important for extern methods as there is no equivalent IL to detect.
 			//
 			// The default in cecil if you do have a method body is to have at least a RET instruction. If we were to let extern methods 
-			// fall through, then that interfere with mono's UnsafeAccessor detection as it tries to detect via body vs no body because 
+			// fall through, then that would interfere with mono's UnsafeAccessor detection as it tries to detect via body vs no body because 
 			// it is much cheaper.
 			//
 			// See https://github.com/dotnet/runtime/issues/102045

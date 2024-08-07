@@ -49,6 +49,8 @@ namespace CilStrip.Mono.Cecil {
 		PInvokeInfo m_pinvoke;
 		readonly ParameterDefinition m_this;
 
+		bool m_enforceNoBody;
+
 		public MethodAttributes Attributes {
 			get { return m_attributes; }
 			set { m_attributes = value; }
@@ -524,7 +526,8 @@ namespace CilStrip.Mono.Cecil {
 					(m_implAttrs & MethodImplAttributes.InternalCall) == 0 &&
 					(m_implAttrs & MethodImplAttributes.Native) == 0 &&
 					(m_implAttrs & MethodImplAttributes.Unmanaged) == 0 &&
-					(m_implAttrs & MethodImplAttributes.Runtime) == 0;
+					(m_implAttrs & MethodImplAttributes.Runtime) == 0 &&
+					(!m_enforceNoBody);
 			}
 		}
 
@@ -563,7 +566,19 @@ namespace CilStrip.Mono.Cecil {
 
 		internal void LoadBody ()
 		{
-			if (m_body == null && this.HasBody) {
+			// if m_rva is zero, it is assumed that there is no method body and it will not even 
+			// try to read the actual code size value. Therefore, if it is zero, make sure to enforce
+			// there is no body. This is important for extern methods as there is no equivalent IL to detect.
+			//
+			// The default in cecil if you do have a method body is to have at least a RET instruction. If we were to let extern methods 
+			// fall through, then that would interfere with mono's UnsafeAccessor detection as it tries to detect via body vs no body because 
+			// it is much cheaper.
+			//
+			// See https://github.com/dotnet/runtime/issues/102045
+			if (m_rva == RVA.Zero) {
+				m_enforceNoBody = true;
+			}
+			else if (m_body == null && this.HasBody) {
 				m_body = new MethodBody (this);
 
 				ModuleDefinition module = DeclaringType != null ? DeclaringType.Module : null;

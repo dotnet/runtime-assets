@@ -2,4 +2,31 @@
   <ItemGroup>
     <None Remove="MachO\src\*" />
   </ItemGroup>
+
+  <ItemGroup>
+    <MachOArch Include="arm64" />
+    <MachOArch Include="x86_64" />
+    <MachOCodesignOption Include="signed" />
+    <MachOCodesignOption Include="unsigned" />
+    <MachOCodesignOption Include="buildonly" />
+  </ItemGroup>
+
+  <Target Name="GenerateMachOBinaries">
+    <ItemGroup>
+      <_MachObjectFile Include="@(MachOArch)">
+        <Codesign>%(MachOCodesignOption.Identity)</Codesign>
+      </_MachObjectFile>
+      <MachObjectFile Include="@(_MachObjectFile->'$(MSBuildThisFileDirectory)MachO/%(Identity)/a.%(Codesign).out')" >
+        <Arch>%(_MachObjectFile.Identity)</Arch>
+      </MachObjectFile>
+    </ItemGroup>
+
+    <MakeDir Directories="%(MachObjectFile.RelativeDir)" />
+    <Exec Command="clang $(MSBuildThisFileDirectory)MachO/src/main.c -o %(MachObjectFile.Identity) -arch %(Arch)" />
+    <Exec Command="codesign --sign - %(MachObjectFile.Identity)"
+          Condition="'%(Codesign)' == 'signed'" />
+    <Exec Command="codesign --remove-signature %(MachObjectFile.Identity)"
+          Condition="'%(Codesign)' == 'unsigned'" />
+  </Target>
+
 </Project>

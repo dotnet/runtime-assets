@@ -19,7 +19,7 @@ Content: https://stackoverflow.com/questions/3143070/javascript-regex-iso-dateti
 Question author: Scott -- https://stackoverflow.com/users/140811/scott
 Answer author: Brock Adams -- https://stackoverflow.com/users/331508/brock-adams
 
-Use: 
+Use:
 
 * https://github.com/dotnet/runtime-assets/blob/1b409ad29feded5e1723e67a37fe094c1c8d0a08/System.IO.Compression.TestData/UncompressedTestFiles/WebFiles/angular.js
 * https://github.com/dotnet/runtime-assets/blob/1b409ad29feded5e1723e67a37fe094c1c8d0a08/System.IO.Compression.TestData/GZipTestData/WebFiles/angular.js.gz
@@ -63,7 +63,7 @@ License notice for Unicode data
 
 https://www.unicode.org/license.html
 
-Copyright © 1991-2022 Unicode, Inc. All rights reserved.
+Copyright © 1991-2024 Unicode, Inc. All rights reserved.
 Distributed under the Terms of Use in https://www.unicode.org/copyright.html.
 
 Permission is hereby granted, free of charge, to any person obtaining

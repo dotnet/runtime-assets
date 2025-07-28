@@ -63,17 +63,14 @@ stages:
           matrix:
             Build_Release:
               _BuildConfig: Release
-              _PublishArg: --publish
             Build_Debug:
               _BuildConfig: Debug
-              _PublishArg: ''
         preSteps:
         - checkout: self
           clean: true
         steps:
         - script: ./build.sh
             --test --pack --ci
-            $(_PublishArg)
             --configuration $(_BuildConfig)
             --prepareMachine
-          displayName: Linux Build / Publish
+          displayName: Linux Build

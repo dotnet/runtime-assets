@@ -44,10 +44,14 @@ stages:
           matrix:
             Build_Release:
               _BuildConfig: Release
+              _PublishArg: -publish
             Build_Debug:
               _BuildConfig: Debug
+              _PublishArg: ''
         steps:
-        - script: eng\common\cibuild.cmd
+        - script: .\build.cmd
+            -test -sign -pack -ci
+            $(_PublishArg)
             -configuration $(_BuildConfig)
             -prepareMachine
           displayName: Windows Build / Publish
@@ -57,15 +61,19 @@ stages:
           demands: ImageOverride -equals build.ubuntu.2204.amd64.open
         strategy:
           matrix:
-            Build_Debug:
-              _BuildConfig: Debug
             Build_Release:
               _BuildConfig: Release
+              _PublishArg: --publish
+            Build_Debug:
+              _BuildConfig: Debug
+              _PublishArg: ''
         preSteps:
         - checkout: self
           clean: true
         steps:
-        - script: eng/common/cibuild.sh
+        - script: ./build.sh
+            --test --pack --ci
+            $(_PublishArg)
             --configuration $(_BuildConfig)
             --prepareMachine
           displayName: Linux Build / Publish

@@ -32,7 +32,7 @@ extends:
         image: 1es-windows-2022
         os: windows
     settings:
-      networkIsolationPolicy: CFSClean
+      networkIsolationPolicy: Preferred,CFSClean
     stages:
     - stage: build
       displayName: Build
@@ -65,5 +65,6 @@ extends:
         enableSourceLinkValidation: false
         enableSigningValidation: false
         symbolPublishingAdditionalParameters: /p:PublishToSymWeb=false /p:PublishToMSDL=false
+
 
 

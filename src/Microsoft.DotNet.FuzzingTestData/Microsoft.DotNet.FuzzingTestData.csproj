@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.Build.NoTargets">
+    <ItemGroup>
+        <None Update="README.md" Pack="False" />
+    </ItemGroup>
+</Project>

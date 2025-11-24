@@ -2,6 +2,7 @@
   <ItemGroup>
     <!-- Contains invalid archive headers that can't be signed. -->
     <ItemsToSign Remove="$(ArtifactsPackagesDir)**\System.IO.Compression.TestData*.nupkg" />
+    <ItemsToSign Remove="$(ArtifactsPackagesDir)**\Microsoft.DotnetFuzzing.TestData*.nupkg" />
     <!-- Ignore these files which can't be signed with a default cert. -->
     <FileExtensionSignInfo Include=".otf" CertificateName="None" />
     <FileExtensionSignInfo Include=".ttf" CertificateName="None" />

@@ -3,6 +3,7 @@
     <!-- Contains invalid archive headers that can't be signed. -->
     <ItemsToSign Remove="$(ArtifactsPackagesDir)**\System.IO.Compression.TestData*.nupkg" />
     <ItemsToSign Remove="$(ArtifactsPackagesDir)**\Microsoft.DotnetFuzzing.TestData*.nupkg" />
+    <ItemsToSign Remove="$(ArtifactsPackagesDir)**\System.Formats.Tar.TestData*.nupkg" />
     <!-- Ignore these files which can't be signed with a default cert. -->
     <FileExtensionSignInfo Include=".otf" CertificateName="None" />
     <FileExtensionSignInfo Include=".ttf" CertificateName="None" />
@@ -10,4 +11,5 @@
     <!-- Ignore these files. These are signed or have tampered signatures for specific test cases and should NOT be signed again. -->
     <FileSignInfo Include="dual_signed.dll;triple_signed.dll;tampered.msi" CertificateName="None" />
   </ItemGroup>
+
 </Project>

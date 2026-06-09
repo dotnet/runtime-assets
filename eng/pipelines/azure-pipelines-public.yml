@@ -7,7 +7,7 @@ trigger:
   paths:
     exclude:
     - docs/*
-    
+
 pr:
   branches:
     include:
@@ -16,7 +16,7 @@ pr:
   paths:
     exclude:
     - docs/*
-    
+
 variables:
 - template: common-variables.yml
 - template: /eng/common/templates/variables/pool-providers.yml
@@ -33,9 +33,10 @@ stages:
           logs: true
           manifests: true
       enableMicrobuild: true
-      enablePublishUsingPipelines: true
+      publishingVersion: 4
       jobs:
       - job: Windows_NT
+        enablePublishing: true
         timeoutInMinutes: 90
         pool:
           name: $(DncEngPublicBuildPool)
@@ -56,6 +57,7 @@ stages:
             -prepareMachine
           displayName: Windows Build / Publish
       - job: Linux
+        enablePublishing: true
         pool:
           name: $(DncEngPublicBuildPool)
           demands: ImageOverride -equals build.ubuntu.2204.amd64.open

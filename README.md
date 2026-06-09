@@ -21,6 +21,9 @@ When reviewing a PR containing binary files, make a best effort to validate thei
 ### 2. Post-merge
 
 After the PR is merged an internal build will publish the packages to a public feed and update the Build Assets Registry. Subscribers to this repository will receive an auto PR update with the updated package version.
+
+NOTE: If you added a new package you need to update the Version.Details.props and Version.Details.xml in the consuming repository to include the new package. You can find the version number in the internal build, or use the `darc add-dependency` command.
+
 ### Optional step: local testing
 
 Testing your assets in your local machine is an optional step you can perform before submitting your PR.

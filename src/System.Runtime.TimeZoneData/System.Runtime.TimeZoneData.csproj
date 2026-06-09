@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets">
   <PropertyGroup>
-    <TimeZoneDataVersion>2025b</TimeZoneDataVersion>
+    <TimeZoneDataVersion>2026b</TimeZoneDataVersion>
     <TimeZoneDataIntermediateDir>$([MSBuild]::NormalizeDirectory('$(IntermediateOutputPath)', 'timezonedata'))</TimeZoneDataIntermediateDir>
     <TimeZoneDataSrcDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'data'))</TimeZoneDataSrcDir>
     <ZicBloat>slim</ZicBloat>
@@ -29,7 +29,7 @@
       Overwrite="true"/>
   </Target>
   
-  <Target Name="GetLatestVersion" BeforeTargets="PrepareForBuild">
+  <Target Name="GetLatestVersion">
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version"
                   DestinationFolder="$(TimeZoneDataIntermediateDir)">
       <Output TaskParameter="DownloadedFile" ItemName="VersionFile" />

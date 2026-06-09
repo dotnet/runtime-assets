@@ -14,7 +14,6 @@ variables:
       value: real
     - name: _InternalBuildArgs
       value: /p:DotNetSignType=$(_SignType) /p:TeamName=$(_TeamName)
-        /p:DotNetPublishUsingPipelines=true
         /p:DotNetArtifactsCategory=$(_DotNetArtifactsCategory)
         /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
     - name: Codeql.Enabled

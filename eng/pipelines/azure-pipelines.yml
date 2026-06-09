@@ -45,9 +45,10 @@ extends:
               logs: true
               manifests: true
           enableMicrobuild: true
-          enablePublishUsingPipelines: true
+          publishingVersion: 4
           jobs:
           - job: Windows_NT
+            enablePublishing: true
             timeoutInMinutes: 90
             pool:
               name: $(DncEngInternalBuildPool)
@@ -62,6 +63,7 @@ extends:
 
     - template: /eng/common/templates-official/post-build/post-build.yml@self
       parameters:
+        publishingInfraVersion: 4
         enableSourceLinkValidation: false
         enableSigningValidation: false
         symbolPublishingAdditionalParameters: /p:PublishToSymWeb=false /p:PublishToMSDL=false

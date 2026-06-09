@@ -29,7 +29,7 @@
       Overwrite="true"/>
   </Target>
   
-  <Target Name="GetLatestVersion" BeforeTargets="PrepareForBuild">
+  <Target Name="GetLatestVersion">
     <DownloadFile SourceUrl="https://data.iana.org/time-zones/tzdb/version"
                   DestinationFolder="$(TimeZoneDataIntermediateDir)">
       <Output TaskParameter="DownloadedFile" ItemName="VersionFile" />

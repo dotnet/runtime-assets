@@ -53,8 +53,16 @@ namespace CilStrip.Mono.Cecil.Binary {
 			dbgHeader.Age = old.Age;
 			dbgHeader.Characteristics = old.Characteristics;
 			dbgHeader.FileName = old.FileName;
+			dbgHeader.MajorVersion = old.MajorVersion;
+			dbgHeader.MinorVersion = old.MinorVersion;
 			dbgHeader.Signature = old.Signature;
-			dbgHeader.TimeDateStamp = ImageInitializer.TimeDateStampFromEpoch();
+			// Portable PDBs (CodeView MinorVersion magic 0x504D) encode a content-derived stamp that
+			// is part of the PDB identity. Preserve it so the rewritten image keeps matching its
+			// unmodified PDB (IsPortableCodeView stays true and symbolication still works). Other
+			// debug entry kinds retain the historical behavior of a freshly generated stamp.
+			dbgHeader.TimeDateStamp = old.MinorVersion == 0x504D
+				? old.TimeDateStamp
+				: ImageInitializer.TimeDateStampFromEpoch();
 			dbgHeader.Type = old.Type;
 		}
 

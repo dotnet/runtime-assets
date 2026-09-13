@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets">
   <PropertyGroup>
-    <TimeZoneDataVersion>2026c</TimeZoneDataVersion>
+    <TimeZoneDataVersion>2026d</TimeZoneDataVersion>
     <TimeZoneDataIntermediateDir>$([MSBuild]::NormalizeDirectory('$(IntermediateOutputPath)', 'timezonedata'))</TimeZoneDataIntermediateDir>
     <TimeZoneDataSrcDir>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'data'))</TimeZoneDataSrcDir>
     <ZicBloat>slim</ZicBloat>
